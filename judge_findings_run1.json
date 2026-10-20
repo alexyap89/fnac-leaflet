@@ -1,0 +1,112 @@
+{
+ "step00": {
+  "framing": 4,
+  "centred": 4,
+  "frontal": 3,
+  "legible": 5,
+  "clarity": 5,
+  "overall": 4,
+  "worst_problem": "The 3D neck model is not rendered; a 2D photo of the procedure occupies the viewport instead.",
+  "frame_percent": 35
+ },
+ "step01": {
+  "framing": 7,
+  "centred": 6,
+  "frontal": 6,
+  "legible": 9,
+  "clarity": 8,
+  "overall": 7,
+  "worst_problem": "Large empty area at the bottom leaves the scene floating high in the viewport.",
+  "frame_percent": 65
+ },
+ "step02": {
+  "framing": 7,
+  "centred": 6,
+  "frontal": 6,
+  "legible": 9,
+  "clarity": 8,
+  "overall": 7,
+  "worst_problem": "Large empty vertical space below the ground line leaves the scene top-heavy and poorly centred.",
+  "frame_percent": 65
+ },
+ "step03": {
+  "framing": 6,
+  "centred": 5,
+  "frontal": 6,
+  "legible": 8,
+  "clarity": 7,
+  "overall": 6,
+  "worst_problem": "Focal subject (patient) sits far left with large empty vertical space, making the composition feel unbalanced.",
+  "frame_percent": 73
+ },
+ "step04": {
+  "framing": 7,
+  "centred": 7,
+  "frontal": 7,
+  "legible": 9,
+  "clarity": 8,
+  "overall": 7,
+  "worst_problem": "Large empty dead space in the lower half of the viewport makes the scene look top\u2011heavy and poorly framed vertically.",
+  "frame_percent": 74
+ },
+ "step05": {
+  "framing": 7,
+  "centred": 6,
+  "frontal": 7,
+  "legible": 9,
+  "clarity": 8,
+  "overall": 7,
+  "worst_problem": "Large empty vertical space below the scene makes the composition feel top-heavy and unbalanced.",
+  "frame_percent": 65
+ },
+ "step06": {
+  "framing": 7,
+  "centred": 6,
+  "frontal": 8,
+  "legible": 9,
+  "clarity": 8,
+  "overall": 7,
+  "worst_problem": "Large empty vertical margins leave the scene poorly centred and under-fill the viewport.",
+  "frame_percent": 65
+ },
+ "step07": {
+  "framing": 8,
+  "centred": 7,
+  "frontal": 9,
+  "legible": 9,
+  "clarity": 8,
+  "overall": 8,
+  "worst_problem": "Large empty space below the figures makes the scene sit too high in the viewport.",
+  "frame_percent": 65
+ },
+ "step08": {
+  "framing": 7,
+  "centred": 6,
+  "frontal": 5,
+  "legible": 9,
+  "clarity": 8,
+  "overall": 7,
+  "worst_problem": "Large empty vertical space below the ground line leaves the scene floating and poorly centred.",
+  "frame_percent": 60
+ },
+ "step09": {
+  "framing": 6,
+  "centred": 6,
+  "frontal": 7,
+  "legible": 9,
+  "clarity": 8,
+  "overall": 7,
+  "worst_problem": "Large empty dead space at the bottom of the viewport leaves the scene vertically unbalanced and poorly centred.",
+  "frame_percent": 70
+ },
+ "step10": {
+  "framing": 7,
+  "centred": 7,
+  "frontal": 9,
+  "legible": 9,
+  "clarity": 9,
+  "overall": 8,
+  "worst_problem": "Large empty area below the floor line wastes vertical space and pushes the scene too high in the frame.",
+  "frame_percent": 70
+ }
+}

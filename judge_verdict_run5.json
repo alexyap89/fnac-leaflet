@@ -1,0 +1,151 @@
+{
+ "findings": {
+  "step00": {
+   "framing": 6,
+   "centred": 5,
+   "frontal": 4,
+   "legible": 5,
+   "clarity": 6,
+   "overall": 5,
+   "worst_problem": "The viewport shows a real photo rather than a clean 3D model, and the key needle site is pushed to the right edge.",
+   "frame_percent": 70
+  },
+  "step01": {
+   "framing": 7,
+   "centred": 8,
+   "frontal": 8,
+   "legible": 4,
+   "clarity": 3,
+   "overall": 5,
+   "worst_problem": "The 3D model renders as a flat, unlabelled beige membrane that does not clearly read as a neck or thyroid gland.",
+   "frame_percent": 40
+  },
+  "step02": {
+   "framing": 8,
+   "centred": 9,
+   "frontal": 9,
+   "legible": 8,
+   "clarity": 8,
+   "overall": 8,
+   "worst_problem": "The anatomical model is rendered small within a large empty viewport, leaving excessive unused space.",
+   "frame_percent": 35
+  },
+  "step03": {
+   "framing": 8,
+   "centred": 9,
+   "frontal": 9,
+   "legible": 8,
+   "clarity": 8,
+   "overall": 8,
+   "worst_problem": "The narrow neck model leaves large empty margins in the wide viewport, underusing the frame.",
+   "frame_percent": 15
+  },
+  "step04": {
+   "framing": 6,
+   "centred": 4,
+   "frontal": 3,
+   "legible": 7,
+   "clarity": 7,
+   "overall": 6,
+   "worst_problem": "The thyroid model is tilted obliquely and sits off-centre, leaving large empty margins.",
+   "frame_percent": 45
+  },
+  "step05": {
+   "framing": 7,
+   "centred": 6,
+   "frontal": 5,
+   "legible": 7,
+   "clarity": 6,
+   "overall": 6,
+   "worst_problem": "The pale soft-tissue neck has low contrast against the light background, making its outline hard to read.",
+   "frame_percent": 45
+  },
+  "step06": {
+   "framing": 5,
+   "centred": 6,
+   "frontal": 4,
+   "legible": 6,
+   "clarity": 5,
+   "overall": 5,
+   "worst_problem": "The 3D model is small, tilted obliquely and floats in a large empty viewport, so the probe-needle-thyroid relationship is hard to read.",
+   "frame_percent": 25
+  },
+  "step07": {
+   "framing": 5,
+   "centred": 4,
+   "frontal": 3,
+   "legible": 4,
+   "clarity": 5,
+   "overall": 4,
+   "worst_problem": "The model is small, off-centre and obliquely rotated, leaving large empty space and making the thyroid hard to read.",
+   "frame_percent": 35
+  },
+  "step08": {
+   "framing": 7,
+   "centred": 8,
+   "frontal": 9,
+   "legible": 7,
+   "clarity": 6,
+   "overall": 7,
+   "worst_problem": "Faint translucent wing-like structures distract from and obscure the thyroid anatomy.",
+   "frame_percent": 70
+  },
+  "step09": {
+   "framing": 7,
+   "centred": 8,
+   "frontal": 9,
+   "legible": 7,
+   "clarity": 6,
+   "overall": 7,
+   "worst_problem": "The translucent soft-tissue layer flares out into an odd wide 'cape' shape that distracts from the thyroid and looks anatomically misleading.",
+   "frame_percent": 45
+  },
+  "step10": {
+   "framing": 7,
+   "centred": 8,
+   "frontal": 9,
+   "legible": 8,
+   "clarity": 8,
+   "overall": 8,
+   "worst_problem": "The anatomical model is rendered small with large empty margins, reducing its visual impact.",
+   "frame_percent": 50
+  }
+ },
+ "x13": {
+  "confirmed": [
+   "step00",
+   "step01",
+   "step02",
+   "step03",
+   "step04",
+   "step05",
+   "step06",
+   "step07",
+   "step08",
+   "step09",
+   "step10"
+  ],
+  "likely_hallucinated": [],
+  "top_priority": "step01: The 3D model renders as a flat, unlabelled beige membrane that does not clearly read as a neck or thyroid gland.",
+  "pattern": "Poor composition characterized by small models, off-center placement, and excessive empty margins within the viewport."
+ },
+ "ornith": {
+  "confirmed": [
+   "step01",
+   "step02",
+   "step03",
+   "step04",
+   "step06",
+   "step07",
+   "step10"
+  ],
+  "likely_hallucinated": [
+   "step00",
+   "step05",
+   "step08",
+   "step09"
+  ],
+  "top_priority": "step06: the probe-needle-thyroid relationship is hard to read because the model is small, off-centre, and obliquely rotated in a large empty viewport",
+  "pattern": "The 3D anatomical model is consistently rendered too small with excessive empty margins and poor centring/orientation, so it fails to fill the frame or clearly convey the needle-thyroid spatial relationship."
+ }
+}

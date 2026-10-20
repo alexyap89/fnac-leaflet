@@ -1,0 +1,112 @@
+{
+ "step00": {
+  "framing": 6,
+  "centred": 5,
+  "frontal": 4,
+  "legible": 5,
+  "clarity": 6,
+  "overall": 5,
+  "worst_problem": "The viewport shows a cluttered real-world photo with the needle site off-centre and the doctor's head cropped, rather than a clean centred 3D model.",
+  "frame_percent": 70
+ },
+ "step01": {
+  "framing": 8,
+  "centred": 8,
+  "frontal": 8,
+  "legible": 4,
+  "clarity": 4,
+  "overall": 6,
+  "worst_problem": "The 3D neck model is unlabeled and visually ambiguous, so a patient cannot identify the thyroid gland or nodule.",
+  "frame_percent": 65
+ },
+ "step02": {
+  "framing": 7,
+  "centred": 9,
+  "frontal": 9,
+  "legible": 8,
+  "clarity": 9,
+  "overall": 8,
+  "worst_problem": "Excessive empty space above and below the model leaves the subject small and under-framed.",
+  "frame_percent": 15
+ },
+ "step03": {
+  "framing": 8,
+  "centred": 9,
+  "frontal": 9,
+  "legible": 8,
+  "clarity": 8,
+  "overall": 8,
+  "worst_problem": "The anatomical model is small and leaves excessive empty space around it in the viewport.",
+  "frame_percent": 30
+ },
+ "step04": {
+  "framing": 6,
+  "centred": 6,
+  "frontal": 4,
+  "legible": 8,
+  "clarity": 8,
+  "overall": 6,
+  "worst_problem": "The thyroid model is shown in an oblique rotated orientation rather than a clean frontal view, weakening anatomical clarity for patients.",
+  "frame_percent": 50
+ },
+ "step05": {
+  "framing": 6,
+  "centred": 6,
+  "frontal": 4,
+  "legible": 6,
+  "clarity": 7,
+  "overall": 6,
+  "worst_problem": "The oversized dark probe crowds the left while the small, off-centre model leaves excessive empty space.",
+  "frame_percent": 45
+ },
+ "step06": {
+  "framing": 7,
+  "centred": 7,
+  "frontal": 5,
+  "legible": 6,
+  "clarity": 6,
+  "overall": 6,
+  "worst_problem": "The pale thyroid and soft-tissue model has very low contrast against the light background, making the anatomy hard to distinguish.",
+  "frame_percent": 45
+ },
+ "step07": {
+  "framing": 6,
+  "centred": 5,
+  "frontal": 4,
+  "legible": 6,
+  "clarity": 6,
+  "overall": 6,
+  "worst_problem": "The 3D model sits left of centre and is tilted obliquely, leaving the key thyroid structure small and hard to focus on.",
+  "frame_percent": 35
+ },
+ "step08": {
+  "framing": 7,
+  "centred": 8,
+  "frontal": 9,
+  "legible": 8,
+  "clarity": 8,
+  "overall": 8,
+  "worst_problem": "The 3D neck model is small relative to the large viewport, leaving excessive empty space around it.",
+  "frame_percent": 35
+ },
+ "step09": {
+  "framing": 6,
+  "centred": 8,
+  "frontal": 9,
+  "legible": 6,
+  "clarity": 6,
+  "overall": 7,
+  "worst_problem": "The translucent soft-tissue mesh is too faint and low-contrast against the pale blue background, making it hard to see.",
+  "frame_percent": 40
+ },
+ "step10": {
+  "framing": 6,
+  "centred": 7,
+  "frontal": 9,
+  "legible": 7,
+  "clarity": 7,
+  "overall": 7,
+  "worst_problem": "The anatomical model is too small within the viewport, leaving excessive empty space above and below.",
+  "frame_percent": 45
+ }
+}

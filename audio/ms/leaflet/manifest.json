@@ -1,0 +1,112 @@
+{
+ "engine": "omnivoice",
+ "voice": "OmniVoice k2-fsa/OmniVoice, one cloned reference voice for every step",
+ "files": [
+  "audio/ms/leaflet/step01.mp3",
+  "audio/ms/leaflet/step02.mp3",
+  "audio/ms/leaflet/step03.mp3",
+  "audio/ms/leaflet/step04.mp3",
+  "audio/ms/leaflet/step05.mp3",
+  "audio/ms/leaflet/step06.mp3",
+  "audio/ms/leaflet/step07.mp3",
+  "audio/ms/leaflet/step08.mp3",
+  "audio/ms/leaflet/step09.mp3"
+ ],
+ "steps": {
+  "step01": {
+   "step": 1,
+   "title": "Leher dan kelenjar tiroid anda",
+   "characters": 240,
+   "words": 39,
+   "duration_s": 15.2,
+   "bytes": 91845,
+   "wpm": 153.9,
+   "engine": "omnivoice"
+  },
+  "step02": {
+   "step": 2,
+   "title": "Menemui ketulan",
+   "characters": 202,
+   "words": 31,
+   "duration_s": 13.08,
+   "bytes": 79101,
+   "wpm": 142.2,
+   "engine": "omnivoice"
+  },
+  "step03": {
+   "step": 3,
+   "title": "Menyediakan kulit",
+   "characters": 164,
+   "words": 26,
+   "duration_s": 10.63,
+   "bytes": 64413,
+   "wpm": 146.8,
+   "engine": "omnivoice"
+  },
+  "step04": {
+   "step": 4,
+   "title": "Meletakkan probe ultrabunyi",
+   "characters": 214,
+   "words": 30,
+   "duration_s": 13.9,
+   "bytes": 84069,
+   "wpm": 129.5,
+   "engine": "omnivoice"
+  },
+  "step05": {
+   "step": 5,
+   "title": "Menjajarkan jarum",
+   "characters": 163,
+   "words": 25,
+   "duration_s": 10.54,
+   "bytes": 63765,
+   "wpm": 142.3,
+   "engine": "omnivoice"
+  },
+  "step06": {
+   "step": 6,
+   "title": "Jarum masuk",
+   "characters": 204,
+   "words": 32,
+   "duration_s": 13.16,
+   "bytes": 79533,
+   "wpm": 145.9,
+   "engine": "omnivoice"
+  },
+  "step07": {
+   "step": 7,
+   "title": "Mengumpul sel",
+   "characters": 252,
+   "words": 38,
+   "duration_s": 16.16,
+   "bytes": 97461,
+   "wpm": 141.1,
+   "engine": "omnivoice"
+  },
+  "step08": {
+   "step": 8,
+   "title": "Jarum keluar",
+   "characters": 167,
+   "words": 24,
+   "duration_s": 10.99,
+   "bytes": 66573,
+   "wpm": 131.0,
+   "engine": "omnivoice"
+  },
+  "step09": {
+   "step": 9,
+   "title": "Selepas itu, dan keputusan anda",
+   "characters": 340,
+   "words": 50,
+   "duration_s": 21.19,
+   "bytes": 127701,
+   "wpm": 141.6,
+   "engine": "omnivoice"
+  }
+ },
+ "total": {
+  "duration_s": 124.85,
+  "bytes": 754461,
+  "steps": 9
+ }
+}

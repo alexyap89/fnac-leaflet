@@ -1,0 +1,161 @@
+{
+ "steps_reviewed": 10,
+ "personas_run": 4,
+ "errors": [],
+ "raw": 18,
+ "kept": 18,
+ "dropped_unsupported": 0,
+ "by_type": {
+  "unclear": 8,
+  "worry": 6,
+  "missing": 4,
+  "good": 0
+ },
+ "consensus": {
+  "1": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ],
+  "4": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ],
+  "6": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ],
+  "10": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ]
+ },
+ "findings": [
+  {
+   "type": "unclear",
+   "where": "1",
+   "quote": "The test is called FNAC.",
+   "why": "I don't know what FNAC means. It is word I never hear before.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "unclear",
+   "where": "4",
+   "quote": "A nodule is a lump in the gland.",
+   "why": "The word nodule I don't understand. Is it bad or not?",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "unclear",
+   "where": "2",
+   "quote": "over the upper trachea",
+   "why": "I don't know what trachea is. It is not word I know.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "worry",
+   "where": "6",
+   "quote": "The skin is usually numbed first with an injection. This stings briefly.",
+   "why": "I am very scared of needles. The word stings make my heart beat fast.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "worry",
+   "where": "10",
+   "quote": "Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated.",
+   "why": "This make me worried. If need repeat, maybe it is bad cancer?",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "worry",
+   "where": "10",
+   "quote": "Results take 1 to 2 weeks.",
+   "why": "I will worry for two whole weeks before I know my body.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "worry",
+   "where": "section 10",
+   "quote": "Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated.",
+   "why": "I want to know what happens next if this happens - another appointment, extra cost, more waiting.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "unclear",
+   "where": "section 10",
+   "quote": "Results take 1 to 2 weeks.",
+   "why": "Then it says call after 3 weeks. Why the gap and who decides?",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "unclear",
+   "where": "section 10",
+   "quote": "If you have not heard after 3 weeks, please call the department.",
+   "why": "I don't know if results come by phone, letter, or online.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "worry",
+   "where": "section 9",
+   "quote": "Contact the department if you have bleeding, swelling or pain that is getting worse.",
+   "why": "I don't know how many hours or days after this is normal versus an emergency.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "missing",
+   "where": "whole screen",
+   "quote": null,
+   "why": "It doesn't say if I can drive myself home or need someone with me after the numbing injection.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "missing",
+   "where": "section 10",
+   "quote": "You can go back to your usual activities straight away.",
+   "why": "It says straight away but doesn't mention heavy lifting, exercise, or working at a desk that day.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "missing",
+   "where": "1",
+   "quote": "The test is called FNAC.",
+   "why": "FNAC is an acronym that is never expanded, so I do not know what the letters stand for or what the full name of the procedure is.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "worry",
+   "where": "4",
+   "quote": "Most lumps like this are not cancer,",
+   "why": "This reassurance gives no percentage or statistic, so I cannot judge how reassuring it actually is when I am worried about cancer.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "missing",
+   "where": "9",
+   "quote": "Contact the department if you have bleeding, swelling or pain that is getting worse.",
+   "why": "No phone number, email, or after-hours contact is given anywhere, so I would not know how to actually reach them.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "unclear",
+   "where": "10",
+   "quote": "Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated.",
+   "why": "'Sometimes' gives no frequency, and repeating means waiting longer without knowing whether it is cancer or not.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "unclear",
+   "where": "6",
+   "quote": "The skin is usually numbed first with an injection.",
+   "why": "'Usually' does not say how often it is used or what would happen if the skin were not numbed.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "unclear",
+   "where": "9",
+   "quote": "Contact the department if you have bleeding, swelling or pain that is getting worse.",
+   "why": "It does not say how much bleeding or how fast-swelling would be an emergency versus something to simply monitor.",
+   "persona": "P3_graduate_anxious"
+  }
+ ],
+ "source_sha256": "74215ab082ffb334"
+}

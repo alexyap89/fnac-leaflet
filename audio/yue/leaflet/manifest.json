@@ -1,0 +1,112 @@
+{
+ "engine": "omnivoice",
+ "voice": "OmniVoice k2-fsa/OmniVoice, one cloned reference voice for every step",
+ "files": [
+  "audio/yue/leaflet/step01.mp3",
+  "audio/yue/leaflet/step02.mp3",
+  "audio/yue/leaflet/step03.mp3",
+  "audio/yue/leaflet/step04.mp3",
+  "audio/yue/leaflet/step05.mp3",
+  "audio/yue/leaflet/step06.mp3",
+  "audio/yue/leaflet/step07.mp3",
+  "audio/yue/leaflet/step08.mp3",
+  "audio/yue/leaflet/step09.mp3"
+ ],
+ "steps": {
+  "step01": {
+   "step": 1,
+   "title": "你嘅颈同甲状腺",
+   "characters": 77,
+   "words": 4,
+   "duration_s": 13.11,
+   "bytes": 79317,
+   "wpm": 18.3,
+   "engine": "omnivoice"
+  },
+  "step02": {
+   "step": 2,
+   "title": "揾到个肿块",
+   "characters": 58,
+   "words": 4,
+   "duration_s": 9.89,
+   "bytes": 59877,
+   "wpm": 24.3,
+   "engine": "omnivoice"
+  },
+  "step03": {
+   "step": 3,
+   "title": "准备皮肤",
+   "characters": 52,
+   "words": 4,
+   "duration_s": 8.82,
+   "bytes": 53397,
+   "wpm": 27.2,
+   "engine": "omnivoice"
+  },
+  "step04": {
+   "step": 4,
+   "title": "握实超声波探头",
+   "characters": 61,
+   "words": 4,
+   "duration_s": 10.57,
+   "bytes": 63981,
+   "wpm": 22.7,
+   "engine": "omnivoice"
+  },
+  "step05": {
+   "step": 5,
+   "title": "对准针",
+   "characters": 47,
+   "words": 4,
+   "duration_s": 8.0,
+   "bytes": 48645,
+   "wpm": 30.0,
+   "engine": "omnivoice"
+  },
+  "step06": {
+   "step": 6,
+   "title": "针入去",
+   "characters": 72,
+   "words": 4,
+   "duration_s": 12.21,
+   "bytes": 73917,
+   "wpm": 19.7,
+   "engine": "omnivoice"
+  },
+  "step07": {
+   "step": 7,
+   "title": "收集细胞",
+   "characters": 63,
+   "words": 4,
+   "duration_s": 10.63,
+   "bytes": 64413,
+   "wpm": 22.6,
+   "engine": "omnivoice"
+  },
+  "step08": {
+   "step": 8,
+   "title": "针出嚟",
+   "characters": 53,
+   "words": 4,
+   "duration_s": 8.9,
+   "bytes": 54045,
+   "wpm": 27.0,
+   "engine": "omnivoice"
+  },
+  "step09": {
+   "step": 9,
+   "title": "之后同你嘅结果",
+   "characters": 92,
+   "words": 4,
+   "duration_s": 15.9,
+   "bytes": 95949,
+   "wpm": 15.1,
+   "engine": "omnivoice"
+  }
+ },
+ "total": {
+  "duration_s": 98.03,
+  "bytes": 593541,
+  "steps": 9
+ }
+}

@@ -1,0 +1,28 @@
+# Deploy repo: only what the page ships and what rebuilds it.
+# Hermes/Z-Anatomy source models (~60 MB) and the lab scratch bench live locally.
+assets/
+_lab/
+_png/
+_full/
+shots/
+_shots*/
+
+# Scratch screenshots and superseded builds
+*.png
+*.bak*
+*.previous.mp3
+*.blend
+*.blend1
+
+# Rendered PCM; the shipped mp3s are committed
+audio/*/leaflet/_neural_wav/
+
+# One model revision only - the one the build inlines
+model/*.glb
+!model/fnac_scene_v12.glb
+model/*.blend*
+
+.DS_Store
+
+# Legacy loose wav renders; the page ships mp3s only
+audio/*/*.wav

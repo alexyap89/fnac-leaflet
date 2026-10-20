@@ -1,0 +1,298 @@
+{
+ "text_reviewed": {
+  "title": "Ultrasound-guided FNAC of a thyroid nodule",
+  "steps": [
+   {
+    "t": "The neck",
+    "d": "A three-dimensional view of the neck region."
+   },
+   {
+    "t": "The thyroid gland",
+    "d": "The thyroid gland sits in the front of the neck, over the upper trachea."
+   },
+   {
+    "t": "The gland in position",
+    "d": "The gland rests against the trachea, with a lobe on each side."
+   },
+   {
+    "t": "The nodule",
+    "d": "A nodule is an area within the gland that is being sampled."
+   },
+   {
+    "t": "The ultrasound probe",
+    "d": "The ultrasound probe is placed on the skin over the gland."
+   },
+   {
+    "t": "The needle",
+    "d": "A fine needle is passed through the skin into the nodule. You may feel a slight pin prick from the needle."
+   },
+   {
+    "t": "Several passes",
+    "d": "The needle is moved back and forth within the nodule several times."
+   },
+   {
+    "t": "The needle is withdrawn",
+    "d": "The needle is removed and an adhesive dressing is applied. The dressing stays on for 1\u20132 hours."
+   },
+   {
+    "t": "After the procedure",
+    "d": "Results are usually available in 1\u20132 weeks."
+   }
+  ],
+  "footer": "Anatomical model: Z-Anatomy (based on BodyParts3D, Database Center for Life Science), licensed CC BY-SA 4.0 . Explanatory text is not part of the approved procedure information sheet."
+ },
+ "nodes_live": [
+  "desktop"
+ ],
+ "personas": [
+  {
+   "id": "P1_low_literacy_elderly",
+   "label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "id": "P2_working_adult",
+   "label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "id": "P3_graduate_anxious",
+   "label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "id": "P4_caregiver",
+   "label": "50, caregiver reading on behalf of an elderly parent"
+  }
+ ],
+ "findings_kept": [
+  {
+   "type": "unclear",
+   "where": "step 2",
+   "quote": "over the upper trachea",
+   "why": "I don't know this word and I feel lost reading it.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "unclear",
+   "where": "step 3",
+   "quote": "with a lobe on each side",
+   "why": "I never hear this word so I do not understand the picture.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "worry",
+   "where": "step 6",
+   "quote": "A fine needle is passed through the skin into the nodule",
+   "why": "I am very scared of sharp things going into my neck.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "worry",
+   "where": "step 7",
+   "quote": "The needle is moved back and forth within the nodule several times.",
+   "why": "Moving the needle many times makes me even more afraid.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "unclear",
+   "where": "footer",
+   "quote": "Explanatory text is not part of the approved procedure information sheet.",
+   "why": "This line makes me think these words are not true or official.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "good",
+   "where": "step 9",
+   "quote": "Results are usually available in 1\u20132 weeks.",
+   "why": "I feel happy to know roughly when I can get the answer.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "worry",
+   "where": "step 7",
+   "quote": "The needle is moved back and forth within the nodule several times.",
+   "why": "Moving a needle around inside my neck several times sounds painful, even though step 6 said it's only a slight pin prick.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "missing",
+   "where": "step 8",
+   "quote": "The dressing stays on for 1\u20132 hours.",
+   "why": "It tells me about the dressing but nothing says how long the procedure itself takes or whether I can go straight back to work.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "unclear",
+   "where": "step 8",
+   "quote": "an adhesive dressing is applied.",
+   "why": "After 1\u20132 hours it doesn't say whether I can wash, exercise, or get the area wet.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "worry",
+   "where": "footer",
+   "quote": "Explanatory text is not part of the approved procedure information sheet.",
+   "why": "Seeing this makes me wonder if what I'm reading is official or just a guess.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "good",
+   "where": "step 9",
+   "quote": "Results are usually available in 1\u20132 weeks.",
+   "why": "At least I know roughly when to expect answers so I can plan around it.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "unclear",
+   "where": "step 4",
+   "quote": "A nodule is an area within the gland that is being sampled.",
+   "why": "It calls a nodule merely 'an area' but never says what it actually is or whether such areas are usually harmless.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "worry",
+   "where": "step 6",
+   "quote": "You may feel a slight pin prick from the needle.",
+   "why": "It only mentions a pin prick and says nothing about pain relief or any numbing before the repeated passes.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "unclear",
+   "where": "step 7",
+   "quote": "The needle is moved back and forth within the nodule several times.",
+   "why": "'Several times' tells me nothing about how many passes I will actually go through.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "missing",
+   "where": "step 8",
+   "quote": "The dressing stays on for 1\u20132 hours.",
+   "why": "It says nothing about bleeding or bruising once the dressing comes off, or what to do if it bleeds.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "worry",
+   "where": "step 9",
+   "quote": "Results are usually available in 1\u20132 weeks.",
+   "why": "'Usually' leaves open a longer wait or an abnormal result with no word on what happens next.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "worry",
+   "where": "footer",
+   "quote": "Explanatory text is not part of the approved procedure information sheet.",
+   "why": "Saying this explanation isn't the approved sheet makes me doubt whether I'm being told the real details.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "unclear",
+   "where": "step 2",
+   "quote": "The thyroid gland sits in the front of the neck, over the upper trachea.",
+   "why": "My parent may not know what 'trachea' means and could be left confused about where exactly this procedure happens.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "unclear",
+   "where": "step 4",
+   "quote": "A nodule is an area within the gland that is being sampled.",
+   "why": "The word 'nodule' might confuse or worry my parent about what is actually being looked at in the neck.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "worry",
+   "where": "step 7",
+   "quote": "The needle is moved back and forth within the nodule several times.",
+   "why": "Hearing that a needle is pushed back and forth inside sounds frightening to my parent and makes the procedure feel more invasive than described.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "missing",
+   "where": "step 8",
+   "quote": "The dressing stays on for 1\u20132 hours.",
+   "why": "It does not say what to do after 1\u20132 hours, when the dressing can come off, or whether there are any restrictions like showering or activity.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "good",
+   "where": "step 6",
+   "quote": "You may feel a slight pin prick from the needle.",
+   "why": "This reassures my parent that only a small prick is expected rather than something painful.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "good",
+   "where": "step 9",
+   "quote": "Results are usually available in 1\u20132 weeks.",
+   "why": "This gives my parent a clear idea of how long to wait before hearing the outcome.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  }
+ ],
+ "findings_unverified_missing": [],
+ "findings_dropped_unsupported_quote": [],
+ "consensus": {
+  "unclear @ step 2": [
+   "P1_low_literacy_elderly",
+   "P4_caregiver"
+  ],
+  "worry @ step 6": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ],
+  "worry @ step 7": [
+   "P1_low_literacy_elderly",
+   "P2_working_adult",
+   "P4_caregiver"
+  ],
+  "good @ step 9": [
+   "P1_low_literacy_elderly",
+   "P2_working_adult",
+   "P4_caregiver"
+  ],
+  "missing @ step 8": [
+   "P2_working_adult",
+   "P3_graduate_anxious",
+   "P4_caregiver"
+  ],
+  "worry @ footer": [
+   "P2_working_adult",
+   "P3_graduate_anxious"
+  ],
+  "unclear @ step 4": [
+   "P3_graduate_anxious",
+   "P4_caregiver"
+  ]
+ },
+ "counts": {
+  "total_raw": 23,
+  "kept": 23,
+  "dropped": 0,
+  "unverified_missing": 0,
+  "by_type": {
+   "unclear": 8,
+   "worry": 8,
+   "missing": 3,
+   "good": 4
+  }
+ }
+}

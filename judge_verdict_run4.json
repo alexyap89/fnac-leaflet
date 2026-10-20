@@ -1,0 +1,150 @@
+{
+ "findings": {
+  "step00": {
+   "framing": 6,
+   "centred": 5,
+   "frontal": 4,
+   "legible": 5,
+   "clarity": 6,
+   "overall": 5,
+   "worst_problem": "The viewport shows a cluttered real-world photo with the needle site off-centre and the doctor's head cropped, rather than a clean centred 3D model.",
+   "frame_percent": 70
+  },
+  "step01": {
+   "framing": 8,
+   "centred": 8,
+   "frontal": 8,
+   "legible": 5,
+   "clarity": 5,
+   "overall": 6,
+   "worst_problem": "The flat single-colour model has no labels or colour coding, so the thyroid region is hard to identify.",
+   "frame_percent": 55
+  },
+  "step02": {
+   "framing": 7,
+   "centred": 9,
+   "frontal": 9,
+   "legible": 8,
+   "clarity": 8,
+   "overall": 8,
+   "worst_problem": "The 3D model is rendered too small, leaving excessive empty space around it in the viewport.",
+   "frame_percent": 15
+  },
+  "step03": {
+   "framing": 8,
+   "centred": 9,
+   "frontal": 9,
+   "legible": 8,
+   "clarity": 8,
+   "overall": 8,
+   "worst_problem": "The anatomical model is small within a large empty viewport, leaving excessive whitespace.",
+   "frame_percent": 74
+  },
+  "step04": {
+   "framing": 8,
+   "centred": 7,
+   "frontal": 5,
+   "legible": 7,
+   "clarity": 8,
+   "overall": 7,
+   "worst_problem": "The oblique camera angle makes the thyroid anatomy hard to read as a clear frontal view.",
+   "frame_percent": 75
+  },
+  "step05": {
+   "framing": 7,
+   "centred": 7,
+   "frontal": 6,
+   "legible": 7,
+   "clarity": 7,
+   "overall": 7,
+   "worst_problem": "The long ultrasound probe cylinder stretches toward the top-left, unbalancing the composition and crowding the frame.",
+   "frame_percent": 60
+  },
+  "step06": {
+   "framing": 7,
+   "centred": 6,
+   "frontal": 5,
+   "legible": 6,
+   "clarity": 6,
+   "overall": 6,
+   "worst_problem": "The translucent soft-tissue layer is too faint and washed-out to read, obscuring the anatomical context.",
+   "frame_percent": 65
+  },
+  "step07": {
+   "framing": 8,
+   "centred": 7,
+   "frontal": 6,
+   "legible": 7,
+   "clarity": 6,
+   "overall": 7,
+   "worst_problem": "The oblique camera angle and overlapping semi-transparent tissues make the needle-to-thyroid relationship hard to read.",
+   "frame_percent": 70
+  },
+  "step08": {
+   "framing": 7,
+   "centred": 9,
+   "frontal": 9,
+   "legible": 6,
+   "clarity": 7,
+   "overall": 7,
+   "worst_problem": "The pale, low-contrast 3D model sits small in a large empty viewport, weakening visual impact.",
+   "frame_percent": 45
+  },
+  "step09": {
+   "framing": 7,
+   "centred": 7,
+   "frontal": 8,
+   "legible": 5,
+   "clarity": 5,
+   "overall": 6,
+   "worst_problem": "Washed-out low-contrast soft tissue makes the anatomical structures hard to distinguish.",
+   "frame_percent": 65
+  },
+  "step10": {
+   "framing": 6,
+   "centred": 7,
+   "frontal": 9,
+   "legible": 6,
+   "clarity": 6,
+   "overall": 6,
+   "worst_problem": "The anatomical model is small and low-contrast with large empty margins, making the thyroid hard to focus on.",
+   "frame_percent": 45
+  }
+ },
+ "x13": {
+  "confirmed": [
+   "step00",
+   "step01",
+   "step02",
+   "step03",
+   "step04",
+   "step05",
+   "step06",
+   "step07",
+   "step08",
+   "step09",
+   "step10"
+  ],
+  "likely_hallucinated": [],
+  "top_priority": "step01",
+  "pattern": "Poor visual communication due to low contrast, small model scale, and lack of anatomical labeling."
+ },
+ "ornith": {
+  "confirmed": [
+   "step00",
+   "step01",
+   "step02",
+   "step03",
+   "step04",
+   "step05",
+   "step06",
+   "step07",
+   "step08",
+   "step09",
+   "step10"
+  ],
+  "likely_hallucinated": [],
+  "top_priority": "step00: Replace the cluttered real-world photo with a clean, centred 3D model so the needle site is clearly visible and off-centre framing is corrected.",
+  "pattern": "Several steps share a small, low-contrast anatomical model sitting in a large empty viewport that weakens focus and visual impact."
+ }
+}

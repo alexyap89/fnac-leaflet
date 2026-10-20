@@ -1,0 +1,97 @@
+{
+ "source": "/home/alex/.hermes/cache/images/img_e949b93b820d.jpg",
+ "size": [
+  650,
+  442
+ ],
+ "layers": [
+  {
+   "name": "background",
+   "role": "bg",
+   "hex": "#e2f2f3",
+   "coverage": 0.49493,
+   "path_chars": 51199,
+   "bbox_full_frame": false
+  },
+  {
+   "name": "skin",
+   "role": "anatomy",
+   "hex": "#f3d2b2",
+   "coverage": 0.16986,
+   "path_chars": 49010,
+   "bbox_full_frame": true
+  },
+  {
+   "name": "skinlight",
+   "role": "anatomy",
+   "hex": "#f4e4c7",
+   "coverage": 0.06345,
+   "path_chars": 59308,
+   "bbox_full_frame": true
+  },
+  {
+   "name": "probe",
+   "role": "equipment",
+   "hex": "#72b2c5",
+   "coverage": 0.04358,
+   "path_chars": 7180,
+   "bbox_full_frame": false
+  },
+  {
+   "name": "nodule",
+   "role": "lesion",
+   "hex": "#d4a6a4",
+   "coverage": 0.03711,
+   "path_chars": 28989,
+   "bbox_full_frame": true
+  },
+  {
+   "name": "white",
+   "role": "equipment",
+   "hex": "#f3f3f3",
+   "coverage": 0.03536,
+   "path_chars": 57901,
+   "bbox_full_frame": false
+  },
+  {
+   "name": "thyroid",
+   "role": "lesion",
+   "hex": "#888476",
+   "coverage": 0.03349,
+   "path_chars": 13531,
+   "bbox_full_frame": true
+  },
+  {
+   "name": "probelight",
+   "role": "equipment",
+   "hex": "#a2c4d2",
+   "coverage": 0.02503,
+   "path_chars": 15432,
+   "bbox_full_frame": false
+  },
+  {
+   "name": "hair",
+   "role": "anatomy",
+   "hex": "#58544c",
+   "coverage": 0.01,
+   "path_chars": 13285,
+   "bbox_full_frame": true
+  },
+  {
+   "name": "skinshade",
+   "role": "anatomy",
+   "hex": "#e9bea3",
+   "coverage": 0.00665,
+   "path_chars": 5199,
+   "bbox_full_frame": true
+  },
+  {
+   "name": "outline",
+   "role": "linework",
+   "hex": "#3a3a3a",
+   "coverage": 0.08055,
+   "path_chars": 56243
+  }
+ ],
+ "bytes": 358927
+}

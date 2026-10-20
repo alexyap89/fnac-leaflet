@@ -1,0 +1,187 @@
+{
+ "sources": {
+  "viscera": "/home/alex/Documents/FNAC_Webapp/assets/VisceralSystem100.fbx",
+  "muscles": "/home/alex/Documents/FNAC_Webapp/assets/MuscularSystem100.fbx"
+ },
+ "structures": [
+  {
+   "name": "Thyroid gland",
+   "role": "thyroid",
+   "faces": 1300
+  },
+  {
+   "name": "Trachea",
+   "role": "airway",
+   "faces": 4516
+  },
+  {
+   "name": "Laryngopharynx",
+   "role": "airway",
+   "faces": 1238
+  },
+  {
+   "name": "Oropharynx",
+   "role": "airway",
+   "faces": 1272
+  },
+  {
+   "name": "Epiglottis",
+   "role": "airway",
+   "faces": 3326
+  },
+  {
+   "name": "Tongue",
+   "role": "soft",
+   "faces": 602
+  },
+  {
+   "name": "Inferior parathyroid gland.r",
+   "role": "parathyroid",
+   "faces": 64
+  },
+  {
+   "name": "Inferior parathyroid gland.l",
+   "role": "parathyroid",
+   "faces": 64
+  },
+  {
+   "name": "Superior parathyroid gland.r",
+   "role": "parathyroid",
+   "faces": 64
+  },
+  {
+   "name": "Superior parathyroid gland.l",
+   "role": "parathyroid",
+   "faces": 64
+  },
+  {
+   "name": "Platysma.l",
+   "role": "skin",
+   "faces": 6548
+  },
+  {
+   "name": "Platysma.r",
+   "role": "skin",
+   "faces": 6548
+  },
+  {
+   "name": "Sternocleidomastoid muscle.l",
+   "role": "skeletalmuscle",
+   "faces": 4952
+  },
+  {
+   "name": "Sternocleidomastoid muscle.r",
+   "role": "skeletalmuscle",
+   "faces": 4952
+  },
+  {
+   "name": "Sternohyoid muscle.l",
+   "role": "strap",
+   "faces": 1394
+  },
+  {
+   "name": "Sternohyoid muscle.r",
+   "role": "strap",
+   "faces": 1394
+  },
+  {
+   "name": "Sternothyroid muscle.l",
+   "role": "strap",
+   "faces": 1088
+  },
+  {
+   "name": "Sternothyroid muscle.r",
+   "role": "strap",
+   "faces": 1088
+  },
+  {
+   "name": "Thyrohyoid muscle.l",
+   "role": "strap",
+   "faces": 692
+  },
+  {
+   "name": "Thyrohyoid muscle.r",
+   "role": "strap",
+   "faces": 692
+  }
+ ],
+ "probe": {
+  "thyroid_box_cm": {
+   "lo": [
+    -2.43,
+    -3.7,
+    145.47
+   ],
+   "hi": [
+    2.43,
+    0.45,
+    148.88
+   ]
+  },
+  "skin_plane_y_cm": -4.43,
+  "footprint_centre_cm": [
+   0.0,
+   -4.7,
+   147.51
+  ],
+  "footprint_len_cm": 6.32,
+  "footprint_gap_to_gland_cm": 1.0,
+  "resting_on": "anterior neck surface, above thyroid",
+  "axis": "transverse across the neck (+X)"
+ },
+ "needle": {
+  "passes_under_probe": true,
+  "entry_point_cm": [
+   -4.62,
+   -4.9,
+   142.16
+  ],
+  "nodule_centre_cm": [
+   -1.26,
+   -1.42,
+   147.0
+  ],
+  "nodule_radius_cm": 0.78,
+  "length_cm": 6.84,
+  "angle_to_vertical_deg": 45.0,
+  "entry_lateral_of_probe_cm": 4.62,
+  "tip_inside_nodule": true
+ },
+ "dressing": {
+  "centre_cm": [
+   -4.62,
+   -4.43,
+   142.16
+  ],
+  "pad_radius_cm": 0.8,
+  "at_entry_site": true
+ },
+ "room": {
+  "bed_height_cm": 131.0,
+  "neck_z_cm": 147.2,
+  "patient_height_m": 1.71,
+  "parts": 49,
+  "sculpted": true,
+  "note": "step 0 setting only; never shown with the anatomy"
+ },
+ "glb": "/home/alex/Documents/FNAC_Webapp/model/fnac_scene.glb",
+ "glb_bytes": 4035044,
+ "object_count": 79,
+ "verify_pass": true,
+ "roles_in_glb": [
+  "airway",
+  "clinician",
+  "dressing",
+  "needle",
+  "nodule",
+  "parathyroid",
+  "patient",
+  "probe",
+  "room",
+  "skeletalmuscle",
+  "skin",
+  "soft",
+  "strap",
+  "thyroid"
+ ]
+}

@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultrasound-Guided FNAC of a Thyroid Nodule — Prototype</title>
+<style>
+  *{box-sizing:border-box}
+  :root{
+    --bg:#eef2f4; --panel:#ffffff; --ink:#1b2226; --muted:#5a666e;
+    --line:#cdd6dc; --accent:#0f6f8f; --focus:#b3521a;
+  }
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--bg); color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .app{display:flex;flex-direction:column;height:100vh}
+  header{
+    background:var(--panel); border-bottom:1px solid var(--line);
+    padding:10px 16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  header h1{font-size:16px;margin:0;font-weight:650}
+  .proto{
+    font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    background:#fdf0e4;color:#8a4512;border:1px solid #e8c9a8;
+    padding:3px 8px;border-radius:5px;
+  }
+  main{flex:1;display:flex;min-height:0}
+  #stage{flex:1;position:relative;min-width:0;background:
+    radial-gradient(115% 85% at 50% 34%, #f2f6f8 0%, #d8e2e8 58%, #b9c8d2 100%);}
+  #stage canvas{display:block;width:100%;height:100%}
+  aside{
+    width:400px;min-width:320px;background:var(--panel);border-left:1px solid var(--line);
+    display:flex;flex-direction:column;min-height:0;
+  }
+  .steplist{overflow-y:auto;flex:1;min-height:0;padding:6px 0}
+  .step{
+    padding:10px 14px;border-bottom:1px solid #edf1f4;cursor:pointer;
+    display:flex;gap:10px;align-items:flex-start;
+  }
+  .step:hover{background:#f6f9fa}
+  .step[aria-current="true"]{background:#e7f2f6;border-left:4px solid var(--accent)}
+  .step .num{
+    flex:0 0 22px;height:22px;border-radius:50%;background:#dde5e9;color:#33424b;
+    display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px;
+  }
+  .step[aria-current="true"] .num{background:var(--accent);color:#fff}
+  .step .t{display:block;font-weight:600;font-size:14.5px;line-height:1.3}
+  .step .d{display:block;font-size:13px;color:var(--muted);margin-top:3px;line-height:1.42}
+  .step .body{min-width:0}
+  .player{
+    border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:8px;
+    align-items:center;flex-wrap:wrap;background:#fafcfd;
+  }
+  button{
+    font:inherit;font-size:13.5px;padding:7px 13px;border-radius:7px;
+    border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--ink);
+  }
+  button:hover{background:#f1f5f7}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  button.primary:hover{background:#0c5c77}
+  .toolbar{
+    display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+    padding:9px 14px;border-top:1px solid var(--line);background:#fafcfd;
+  }
+  label.chk{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer}
+  .dot{width:11px;height:11px;border-radius:3px;flex:0 0 11px;border:1px solid rgba(0,0,0,.18)}
+  .toolbar{flex-direction:column;align-items:stretch;gap:6px}
+  .toolbar .tbhead{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--muted);margin-bottom:2px}
+  label.chk{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink);cursor:pointer}
+  label.chk.spin{margin-top:6px;color:var(--muted)}
+  .cam{position:absolute;right:14px;top:14px;display:flex;gap:6px}
+  .hint{
+    position:absolute;left:50%;transform:translateX(-50%);bottom:14px;
+    background:rgba(27,34,38,.86);color:#fff;font-size:12.5px;padding:6px 12px;
+    border-radius:20px;pointer-events:none;opacity:0;transition:opacity .3s;
+  }
+  .hint.on{opacity:1}
+  .fallback{
+    padding:22px;font-size:14px;color:var(--muted);
+  }
+  dl.gloss{margin:2px 0 10px;padding:0}
+  dl.gloss dt{font-weight:650;font-size:12.5px;margin-top:7px}
+  dl.gloss dd{margin:1px 0 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
+  footer{
+    font-size:11.5px;color:var(--muted);padding:8px 16px;background:var(--panel);
+    border-top:1px solid var(--line);
+  }
+  .narr{padding:10px 14px;border-bottom:1px solid #edf1f4;font-size:13.5px;color:#33424b;background:#fbfdfe}
+  .narr strong{color:var(--ink)}
+  @media (max-width:820px){
+    main{flex-direction:column}
+    aside{width:auto;border-left:none;border-top:1px solid var(--line);max-height:52%}
+  }
+  #labels { position:absolute; inset:0; pointer-events:none; }
+  .lab {
+    position:absolute; transform:translate(-50%,-50%);
+    background:rgba(17,24,39,.86); color:#fff; font:600 12px/1.2 system-ui,sans-serif;
+    padding:3px 8px; border-radius:999px; white-space:nowrap;
+    box-shadow:0 1px 4px rgba(0,0,0,.35);
+  }
+  body.hc .lab { background:#000; border:1px solid #fff; }
+  body.big .lab { font-size:15px; padding:5px 11px; }
+  #loading {
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    background:var(--panel,#f6f7f9); color:var(--ink,#333);
+    font:500 15px/1.4 system-ui,sans-serif; text-align:center; padding:20px;
+  }
+  #loading[hidden] { display:none; }
+  #loading .bar { width:190px; height:6px; border-radius:3px; background:#dfe3e8; overflow:hidden; margin:12px auto 0; }
+  #loading .bar i { display:block; height:100%; width:0; background:#2f6fb7; transition:width .15s; }
+  body.hc #loading { background:#000; color:#fff; }
+  body.hc #loading .bar { background:#333; }
+  body.hc #loading .bar i { background:#ffd400; }
+  /* Step 0 stacks the photograph over a labelled schematic. Both must stay
+     visible: an earlier version let the photo wrapper take the whole column and
+     pushed the diagram off screen entirely. */
+  /* Step 0's photo + diagram overlay the stage. They must be ABSOLUTELY
+     positioned: #stage's canvas is 100%x100%, so siblings that follow it in
+     normal flow lay out below the canvas box and collapse to zero height. */
+  #roomphoto, #roomfig { position:absolute; left:0; right:0; z-index:2; }
+  #roomphoto { margin:0; top:10px; display:flex; flex-direction:column;
+               align-items:center; gap:6px; padding:0 12px; }
+  #roomphoto[hidden] { display:none; }
+  #roomphoto img { max-width:100%; max-height:42vh; object-fit:contain;
+                   border-radius:8px; border:1px solid #c8d0da; }
+  #roomphoto figcaption { font:500 12px/1.4 system-ui,sans-serif; color:var(--ink,#333);
+                          max-width:62ch; text-align:center; }
+  #roomfig { top:auto; bottom:8px; max-width:min(100%, 820px); margin:0 auto;
+             aspect-ratio:640 / 380; height:auto; }
+  #roomfig[hidden] { display:none; }
+  body.hc #roomphoto img { border-color:#fff; }
+  body.big #roomphoto figcaption { font-size:15px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Ultrasound-guided FNAC of a thyroid nodule</h1>
+    <span class="proto">Prototype — not for clinical use</span>
+  </header>
+
+  <main>
+    <div id="stage">
+    <div id="loading" role="status" aria-live="polite">Preparing the 3D view&hellip;<span class="bar"><i></i></span></div>
+    <div id="labels"></div>
+
+  <!-- Step 0: a 2D diagram. Deterministic and legible; the 3D carries the anatomy. -->
+  <figure id="roomphoto" hidden>
+    <img src="assets/step0_source_chatgpt.png"
+         alt="A clinician in scrubs holds an ultrasound probe against the neck of a
+              patient lying on a couch, and guides a fine needle with the other hand.
+              An ultrasound machine on a cart stands beside them."
+         width="1312" height="1199">
+    <figcaption>An ultrasound-guided fine needle aspiration, about to take place.
+      You lie on your back. The doctor sits beside you with the ultrasound machine.</figcaption>
+  </figure>
+  <svg id="roomfig" viewBox="0 0 640 380" role="img"
+       aria-labelledby="roomfig-title roomfig-desc" hidden>
+    <title id="roomfig-title">You in the room</title>
+    <desc id="roomfig-desc">A diagram of the room. You lie on your back on a bed.
+      The doctor sits beside you holding an ultrasound probe. An ultrasound
+      machine on a cart stands next to the bed.</desc>
+
+    <style>
+      .fig-line  { fill:none; stroke:#2b3440; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+      .fig-thin  { fill:none; stroke:#2b3440; stroke-width:1.5; stroke-linecap:round; }
+      .fig-bed   { fill:#dfe6ee; stroke:#2b3440; stroke-width:2.4; stroke-linejoin:round; }
+      .fig-skin  { fill:#f0cbb2; stroke:#2b3440; stroke-width:2.2; }
+      .fig-cloth { fill:#cfd9e6; stroke:#2b3440; stroke-width:2.2; stroke-linejoin:round; }
+      .fig-cart  { fill:#e6ebf2; stroke:#2b3440; stroke-width:2.2; stroke-linejoin:round; }
+      .fig-screen{ fill:#1f3550; stroke:#2b3440; stroke-width:2; }
+      .fig-probe { fill:#2b3440; }
+      /* Step 0 stacks the photograph over a labelled schematic. Both must stay
+     visible: an earlier version let the photo wrapper take the whole column and
+     pushed the diagram off screen entirely. */
+</style>
+
+    <!-- floor -->
+    <line x1="24" y1="330" x2="616" y2="330" class="fig-line"/>
+    <!-- bed -->
+    <rect x="70" y="252" width="330" height="34" rx="8" class="fig-bed"/>
+    <line x1="92" y1="286" x2="92" y2="330" class="fig-line"/>
+    <line x1="378" y1="286" x2="378" y2="330" class="fig-line"/>
+    <!-- pillow -->
+    <rect x="76" y="238" width="58" height="20" rx="9" class="fig-bed"/>
+
+    <!-- YOU: supine on the bed, head on the pillow, arms at the sides -->
+    <path class="fig-cloth" d="M96 250 q10 -26 34 -26 l44 0 q26 0 30 26 z"/>
+    <circle cx="140" cy="232" r="19" class="fig-skin"/>
+    <path class="fig-thin" d="M132 228 q4 -3 9 0"/>
+    <path class="fig-thin" d="M147 228 q4 -3 9 0"/>
+    <path class="fig-thin" d="M136 243 q7 5 14 0"/>
+    <path class="fig-line" d="M112 258 l-16 26"/>
+    <path class="fig-line" d="M196 258 l14 26"/>
+
+    <!-- DOCTOR: seated on a stool, facing you -->
+    <circle cx="500" cy="196" r="20" class="fig-skin"/>
+    <path class="fig-line" d="M492 191 q4 -3 9 0"/>
+    <path class="fig-line" d="M507 191 q4 -3 9 0"/>
+    <path class="fig-cloth" d="M474 218 q16 -16 52 0 l6 46 l-64 0 z"/>
+    <path class="fig-line" d="M480 264 l-10 34"/>
+    <path class="fig-line" d="M520 264 l12 34"/>
+    <line x1="466" y1="298" x2="534" y2="298" class="fig-line"/>
+    <line x1="500" y1="298" x2="500" y2="330" class="fig-thin"/>
+    <!-- the doctor's arm holds the probe against your neck -->
+    <path class="fig-line" d="M478 232 q-46 -12 -78 -2"/>
+    <path class="fig-line" d="M472 244 q-40 -6 -62 0"/>
+    <rect x="386" y="228" width="22" height="12" rx="3" class="fig-probe" transform="rotate(-8 397 234)"/>
+    <!-- ultrasound waves -->
+    <path class="fig-thin" d="M392 244 q-6 8 -1 16" opacity=".75"/>
+    <path class="fig-thin" d="M384 242 q-10 12 -3 24" opacity=".5"/>
+
+    <!-- ULTRASOUND MACHINE -->
+    <rect x="548" y="176" width="70" height="118" rx="8" class="fig-cart"/>
+    <rect x="556" y="150" width="56" height="40" rx="4" class="fig-screen"/>
+    <path class="fig-thin" d="M562 162 h34 M562 170 h44 M562 178 h26" stroke="#9fb4cc"/>
+    <line x1="560" y1="294" x2="560" y2="330" class="fig-line"/>
+    <line x1="606" y1="294" x2="606" y2="330" class="fig-line"/>
+    <circle cx="560" cy="330" r="7" class="fig-cart"/>
+    <circle cx="606" cy="330" r="7" class="fig-cart"/>
+
+    <!-- LABELS, anchored to the things they name -->
+    <g font-family="system-ui,-apple-system,sans-serif" font-size="17" font-weight="600">
+      <text x="140" y="196" text-anchor="middle" fill="#1b2430">You</text>
+      <path class="fig-thin" d="M140 202 l0 12" stroke-dasharray="3 3"/>
+      <text x="500" y="160" text-anchor="middle" fill="#1b2430">Doctor</text>
+      <path class="fig-thin" d="M500 166 l0 12" stroke-dasharray="3 3"/>
+      <text x="583" y="136" text-anchor="middle" fill="#1b2430">Ultrasound</text>
+      <path class="fig-thin" d="M583 142 l0 6" stroke-dasharray="3 3"/>
+    </g>
+  </svg>
+
+      <div class="cam">
+        <button data-view="front">Front</button>
+        <button data-view="oblique">Oblique</button>
+        <button data-view="lateral">Side</button>
+        <button data-view="reset">Reset</button>
+      </div>
+      <div class="hint" id="hint">Drag to rotate · scroll to zoom</div>
+    </div>
+
+    <aside>
+      <div class="narr" id="narr"><strong>Step 1.</strong> The neck is shown in three dimensions.</div>
+      <div class="steplist" id="steplist"></div>
+      <div class="player">
+        <button id="back">‹ Back</button>
+        <button id="play" class="primary">Play</button>
+        <button id="fwd">Next ›</button>
+        <span id="counter" style="margin-left:auto;font-size:12.5px;color:var(--muted)"></span>
+      </div>
+      <div class="toolbar">
+        <b class="tbhead">Words used</b>
+        <dl class="gloss">
+          <dt>FNAC</dt>
+          <dd>Fine Needle Aspiration Cytology. The test. A very thin needle
+              takes a few cells from the gland to look at.</dd>
+          <dt>Nodule</dt>
+          <dd>A lump in the gland. It is a finding, not a diagnosis.</dd>
+          <dt>Thyroid</dt>
+          <dd>The gland in the front of the neck that controls how the body
+              uses energy.</dd>
+          <dt>Numbing injection</dt>
+          <dd>A small injection in the skin to make the area less sensitive
+              before the needle.</dd>
+          <dt>Passes</dt>
+          <dd>Gentle in-and-out movements of the needle to collect enough
+              cells. They last a few seconds.</dd>
+          <dt>Repeated test</dt>
+          <dd>If the sample is not clear enough to give an answer, the test
+              may need to be done again.</dd>
+        </dl>
+        <b class="tbhead">Show</b>
+        <label class="chk"><input type="checkbox" id="cThyroid" checked>
+          <span class="dot" style="background:#a3382f"></span>Thyroid gland</label>
+        <label class="chk"><input type="checkbox" id="cPara" checked>
+          <span class="dot" style="background:#d9c26a"></span>Parathyroid glands</label>
+        <label class="chk"><input type="checkbox" id="cAirway" checked>
+          <span class="dot" style="background:#dfd8cf"></span>Airway</label>
+        <label class="chk"><input type="checkbox" id="cSoft" checked>
+          <span class="dot" style="background:#cf7f79"></span>Soft tissue</label>
+        <label class="chk spin"><input type="checkbox" id="cSpin"> Auto-rotate</label>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    The written information on this screen follows the
+    <strong>Procedure Information Sheet (Version 01)</strong> used in this department.
+    Anatomical model: <strong>Z-Anatomy</strong> (based on BodyParts3D, Database Center for Life Science),
+    licensed <strong>CC BY-SA 4.0</strong>.
+  </footer>
+</div>
+
+<script src="assets/three.min.js"></script>
+<script src="assets/GLTFLoader.js"></script>
+<script src="assets/OrbitControls.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // ---- Step sequence. Titles and captions only; no reassurance, no frequency
+  // or duration claims, no wording presented as if it came from the approved
+  // sheet. Structures named here are the ones actually present in the model.
+  var STEPS = [
+    { t: "You, in the room", d: "You will lie on a bed on your back. The doctor sits beside you and uses an ultrasound machine on a cart. The procedure is carried out under ultrasound guidance for accurate placement of the needle.",
+      show: { skin: true, skeletalmuscle: false, strap: false, thyroid: false, parathyroid: false, airway: false, soft: false, probe: false, needle: false, dressing: false, room: true, patient: true, clinician: true },
+      cam: "front", focus: "room" },
+    { t: "The neck", d: "This is a three-dimensional view of the neck. The test is called FNAC. It uses a very thin needle to take a small sample from the thyroid gland.",
+      show: { skin: true, skeletalmuscle: false, strap: false, thyroid: false, parathyroid: false, airway: false, soft: false, probe: false, needle: false },
+      cam: "front", focus: "neck" },
+    { t: "The thyroid gland", d: "The thyroid gland sits in the front of the neck, over the upper trachea.",
+      show: { skin: false, skeletalmuscle: false, strap: false, thyroid: true, parathyroid: false, airway: true, soft: false, probe: false, needle: false },
+      cam: "front", focus: "thyroid" },
+    { t: "The gland in position", d: "The gland rests against the trachea, with a lobe on each side, joined in the middle.",
+      show: { skin: false, skeletalmuscle: false, strap: false, thyroid: true, parathyroid: false, airway: true, soft: false, probe: false, needle: false },
+      cam: "front", focus: "thyroid" },
+    { t: "The nodule", d: "A thyroid nodule is an abnormal growth of thyroid cells into a lump within the thyroid. Most thyroid nodules are benign, however some thyroid nodules may be cancerous. FNAC is done to determine the nature of the nodule and to try to rule out the possibility of cancer within the thyroid gland.",
+      show: { skin: false, skeletalmuscle: false, strap: false, thyroid: true, parathyroid: false, airway: false, soft: false, probe: false, needle: false },
+      cam: "oblique", focus: "thyroid" },
+    { t: "The ultrasound probe", d: "The ultrasound probe is placed on the skin over the gland.",
+      show: { skin: true, skeletalmuscle: false, strap: false, thyroid: true, parathyroid: false, airway: false, soft: true, probe: true, needle: false },
+      cam: "oblique", focus: "procedure" },
+    { t: "The needle", d: "A fine needle is passed through the skin into the nodule. You may be given local anaesthetic injection to numb the injection site. You may feel a slight pin prick from the needle.",
+      show: { skin: true, skeletalmuscle: false, strap: false, thyroid: true, parathyroid: false, airway: false, soft: false, probe: true, needle: true },
+      cam: "oblique", focus: "procedure" },
+    { t: "Several passes", d: "The needle is moved gently in and out of the lump a few times. This takes only a few seconds.",
+      show: { skin: true, skeletalmuscle: false, strap: false, thyroid: true, parathyroid: false, airway: false, soft: false, probe: true, needle: true },
+      cam: "oblique", focus: "procedure" },
+    { t: "The needle is withdrawn", d: "The needle is removed and an adhesive dressing is put over the puncture site.",
+      show: { skin: true, skeletalmuscle: false, strap: true, thyroid: true, parathyroid: false, airway: false, soft: true, probe: false, needle: false },
+      cam: "front", focus: "thyroid" },
+    { t: "The dressing", d: "The adhesive dressing over the puncture site is best left in place for 1-2 hours after which it can be removed and the area washed if required. You may notice slight pain with swelling or bruising at the injection site and can alleviate this with simple pain killers like Panadol. You need to seek immediate medical attention if you experience sudden increase in pain or swelling, continued bleeding or difficulty in breathing.",
+      show: { skin: true, skeletalmuscle: false, strap: false, thyroid: true, parathyroid: false, airway: false, soft: true, probe: false, needle: false },
+      cam: "front", focus: "thyroid" },
+    { t: "After the procedure", d: "You can resume usual activities including eating and drinking after the procedure but should not engage in strenuous physical activity (such as heavy lifting or contact sports) for approximately 24 hours after the procedure. The results of the test usually take a week or two to process and your primary doctor should be making arrangements to communicate this to you accordingly. So it is important to attend the follow-up appointment so the results can be discussed with you. Approximately 5% to 10% of FNAC results may return as non-diagnostic or inadequate. This is because there were not enough cells sampled, so the Pathologist is unable to make a clear diagnosis. If this occurs, subsequent plans would be best discussed with your primary doctor.",
+      show: { skin: true, skeletalmuscle: false, strap: false, thyroid: true, parathyroid: false, airway: false, soft: true, probe: false, needle: false },
+      cam: "front", focus: "all" }
+  ];
+
+  var VIEWS = {
+    // A TRUE frontal: theta 0 and phi exactly 90 deg (PI/2) so the camera looks
+    // straight at the anterior surface. phi 1.32 was slightly above level, which
+    // is why the view still looked tilted.
+    front:   { theta: 0.0,  phi: 1.5708, dist: 1.0 },
+    oblique: { theta: 0.72, phi: 1.30, dist: 1.0 },
+    lateral: { theta: 1.45, phi: 1.34, dist: 1.0 },
+    reset:   { theta: 0.0,  phi: 1.5708, dist: 1.0 }
+  };
+
+  var stage = document.getElementById("stage");
+  var steplist = document.getElementById("steplist");
+  var narr = document.getElementById("narr");
+  var counter = document.getElementById("counter");
+  var hint = document.getElementById("hint");
+
+  // ---- on-scene labels ---------------------------------------------------
+  // Anchored to fixed points in the room group, projected to screen space every
+  // frame. Only shown on step 0 (the room); hidden with the room itself.
+  var LABEL_ANCHORS = null, labelEls = [];
+
+  function buildLabels() {
+    var host = document.getElementById("labels");
+    if (!host) return;
+    host.innerHTML = "";
+    labelEls = [];
+    LABEL_ANCHORS = [];
+    var spec = [
+      { id: "you",       text: "You (patient)" },
+      { id: "doctor",    text: "Doctor" },
+      { id: "ultrasound",text: "Ultrasound" }
+    ];
+    spec.forEach(function (sp) {
+      var el = document.createElement("div");
+      el.className = "lab";
+      el.textContent = sp.text;
+      el.dataset.id = sp.id;
+      host.appendChild(el);
+      var an = new THREE.Vector3();
+      labPick(sp.id, an);
+      LABEL_ANCHORS.push({ el: el, point: an, id: sp.id });
+      labelEls.push(el);
+    });
+  }
+
+  // Choose a representative point for each labelled thing, using the actual
+  // meshes so the label follows any geometry change.
+  function labPick(id, out) {
+    function pick(roleList) {
+      var b = new THREE.Box3();
+      roleList.forEach(function (r) { (structures[r] || []).forEach(function (m) { b.expandByObject(m); }); });
+      return b.isEmpty() ? null : b.getCenter(out);
+    }
+    if (id === "you") {
+      return pick(["patient", "skin"]);
+    }
+    if (id === "doctor") {
+      return pick(["clinician"]);
+    }
+    if (id === "ultrasound") {
+      return pick(["room"]);   // the cart lives in the room role
+    }
+  }
+
+  function showDiagram(show) {
+    // Step 0 shows the real (anonymised) photograph above a labelled schematic.
+    // Hide the WebGL canvas and the 3D labels; the 3D returns from step 1 on.
+    var fig = document.getElementById("roomfig");
+    if (fig) {
+      // SVGSVGElement does not reflect `hidden` to the attribute, so a CSS
+      // [hidden] rule would keep matching. Drive the attribute directly.
+      if (show) fig.removeAttribute("hidden");
+      else fig.setAttribute("hidden", "");
+    }
+    var ph = document.getElementById("roomphoto");
+    if (ph) ph.hidden = !show;
+    var cv = (renderer && renderer.domElement) || document.querySelector("canvas");
+    if (cv) cv.style.visibility = show ? "hidden" : "visible";
+    labelEls.forEach(function (e) { e.style.display = "none"; });
+  }
+
+  function updateLabels() {
+    if (!LABEL_ANCHORS || !labelEls.length) return;
+    var show = false;                  // labels live in the diagram now
+    labelEls.forEach(function (e) {
+      e.style.display = show ? "" : "none";
+    });
+    if (!show) return;
+    var w = stage.clientWidth, h = stage.clientHeight;
+    LABEL_ANCHORS.forEach(function (a) {
+      var v = a.point.clone().project(camera);
+      if (v.z > 1) { a.el.style.opacity = "0"; return; }   // behind the camera
+      a.el.style.opacity = "1";
+      a.el.style.left = ((v.x * 0.5 + 0.5) * w) + "px";
+      a.el.style.top  = ((-v.y * 0.5 + 0.5) * h) + "px";
+    });
+  }
+
+  function setLoading(pct, msg) {
+    var el = document.getElementById("loading");
+    if (!el) return;
+    if (msg) el.firstChild && (el.textContent = msg);
+    var bar = el.querySelector(".bar i");
+    if (bar && pct != null) bar.style.width = Math.round(pct * 100) + "%";
+  }
+  function hideLoading() {
+    var el = document.getElementById("loading");
+    if (el) el.hidden = true;
+  }
+
+  function fail(msg) {
+    stage.innerHTML = '<div class="fallback"><p><strong>' + msg + '</strong></p>' +
+      '<p>The step sequence and captions remain available in the panel.</p></div>';
+  }
+
+  if (typeof THREE === "undefined" || typeof THREE.OrbitControls === "undefined") {
+    // Still render the step list — the text is the clinically meaningful part.
+    fail("The 3D view could not be loaded.");
+    buildStepList();
+    return;
+  }
+
+  // ---- renderer ----
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  } catch (e) {
+    fail("WebGL is not available in this browser.");
+    buildStepList();
+    return;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  // ACES tone mapping so bright materials roll off into the highlights instead
+  // of clipping to flat white, which is what made the skin read as a white shell.
+  if (THREE.ACESFilmicToneMapping !== undefined) {
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.92;
+  }
+  stage.appendChild(renderer.domElement);
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(38, 1, 0.01, 100);
+
+  // ---- lighting: soft studio, matching the reference look ----
+  // Balanced three-point lighting. The previous set summed to ~3.7 intensity of
+  // pure white with no tone mapping, which blew every light material out to
+  // white - the skin read as a bright shell rather than skin.
+  scene.add(new THREE.AmbientLight(0xffffff, 0.28));
+  var key = new THREE.DirectionalLight(0xfff4e8, 0.85);   // warm key
+  key.position.set(1.2, 1.4, 2.0); scene.add(key);
+  var fill = new THREE.DirectionalLight(0xdfe8ff, 0.32);  // cool fill
+  fill.position.set(-1.8, 0.4, 1.1); scene.add(fill);
+  var rim = new THREE.DirectionalLight(0xffffff, 0.42);
+  rim.position.set(0.2, 1.0, -1.9); scene.add(rim);
+  scene.add(new THREE.HemisphereLight(0xcfe0ea, 0x8a9096, 0.35));
+
+  // ---- camera orbit ----
+  var target = new THREE.Vector3(0, 0, 0);
+  var sph = { theta: VIEWS.front.theta, phi: VIEWS.front.phi, dist: 0.34 };
+  var controls;
+  if (THREE.OrbitControls) {
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.enablePan = false;
+    controls.minDistance = 0.02;   // metres: the close-up fits need ~5 cm
+    // The room step needs ~2.3 m. A ceiling tuned for the neck made step 0
+    // impossible to frame - the fit was clamped to under half the distance it
+    // asked for and showed only a fragment of the bed.
+    controls.maxDistance = 6.0;    // metres: room + whole-assembly fits
+  }
+
+  var root = new THREE.Group();
+  scene.add(root);
+
+  // ---- structure registry, filled once the GLB loads ----
+  var structures = {};      // role -> [Object3D]
+  // THE role list. Declared once, at the top: a second copy further down caused
+  // classify() to see different lists depending on call timing, which silently
+  // folded the room's meshes into the "soft" role.
+  var roles = ["skin", "skeletalmuscle", "strap", "thyroid", "parathyroid",
+               "airway", "soft", "probe", "needle", "nodule", "dressing",
+               "room", "patient", "clinician"];
+  var modelRadius = 0.1;
+  var modelSize = new THREE.Vector3(0.1, 0.1, 0.1);
+  var camDist = 0.34;
+
+  // ---- a marker for the nodule: a small sphere inside the thyroid lobe.
+  // Its position is DERIVED from the thyroid's own bounding box, so it cannot
+  // drift away from the gland if the model is rebuilt.
+  var nodule = null;
+
+  function makeMaterials() {
+    return {
+      // skin opacity is driven per-step by SKIN_OPACITY, so it starts opaque:
+      // the first thing a patient sees must be a body surface, not a diagram.
+      // Single-sided FRONT only. DoubleSide plus transparent depthWrite made the
+      // apparent opacity depend on draw order, so the skin looked more or less
+      // translucent depending on which way the model was orbited.
+      skin: new THREE.MeshStandardMaterial({
+        color: 0xc99a80, roughness: 0.86, metalness: 0.0,
+        transparent: true, opacity: 1.0, depthWrite: true,
+        side: THREE.FrontSide }),
+      skeletalmuscle: new THREE.MeshStandardMaterial({
+        // was 0.34 with depthWrite off: it greyed out the thyroid behind it
+        // without reading as a layer of its own.
+        color: 0xb45454, roughness: 0.62, metalness: 0.0,
+        transparent: true, opacity: 0.62, depthWrite: true }),
+      strap: new THREE.MeshStandardMaterial({
+        color: 0xad4f4b, roughness: 0.6, metalness: 0.0,
+        transparent: true, opacity: 0.72, depthWrite: true }),
+      thyroid: new THREE.MeshStandardMaterial({
+        color: 0xa3382f, roughness: 0.52, metalness: 0.0,
+        transparent: true, opacity: 0.96 }),
+      parathyroid: new THREE.MeshStandardMaterial({
+        color: 0xd9c26a, roughness: 0.5, metalness: 0.0 }),
+      airway: new THREE.MeshStandardMaterial({
+        // the trachea must read as a solid tube next to the gland
+        color: 0xd6e2ea, roughness: 0.55, metalness: 0.0,
+        transparent: true, opacity: 0.85, depthWrite: true }),
+      soft: new THREE.MeshStandardMaterial({
+        color: 0xc08a83, roughness: 0.58, metalness: 0.0,
+        transparent: true, opacity: 0.78, depthWrite: true }),
+      probe: new THREE.MeshStandardMaterial({
+        color: 0x2b3138, roughness: 0.35, metalness: 0.1 }),
+      needle: new THREE.MeshStandardMaterial({
+        color: 0xd8dce0, roughness: 0.2, metalness: 0.65 }),
+      // The lesion. The GLB gives it its own role precisely so it is not drawn
+      // as polished metal, which made it invisible inside the near-opaque gland.
+      nodule: new THREE.MeshStandardMaterial({
+        color: 0x7d1f16, roughness: 0.55, metalness: 0.0,
+        emissive: 0x3a0a05, emissiveIntensity: 0.8 }),
+      // the dressing: pale gauze pad with a lighter adhesive strip over it
+      dressing: new THREE.MeshStandardMaterial({
+        color: 0xf2ede4, roughness: 0.92, metalness: 0.0 }),
+      // step 0 setting. Each part needs its OWN tone or the bed, patient,
+      // clinician and cart merge into one grey mass at this camera distance.
+      room: new THREE.MeshStandardMaterial({
+        color: 0xb9c2c9, roughness: 0.80, metalness: 0.0 }),   // bed, cart
+      patient: new THREE.MeshStandardMaterial({
+        color: 0xd8c3b0, roughness: 0.88, metalness: 0.0 }),   // skin/gown
+      clinician: new THREE.MeshStandardMaterial({
+        color: 0x4a6b8a, roughness: 0.85, metalness: 0.0 })    // scrubs
+    };
+  }
+
+  var MATS = makeMaterials();
+
+  // Roles come from the GLB's own object names, which the builder writes as
+  // "<role>__<original name>". Trust that prefix first so the runtime cannot
+  // disagree with the build; fall back to keyword matching only if absent.
+  function classify(name) {
+    var n = (name || "");
+    var i = n.indexOf("__");
+    if (i > 0) {
+      var pre = n.slice(0, i).toLowerCase();
+      // Any role named in `roles` is valid - no separate list to forget to
+      // update. Unknown prefixes still fall through to the "soft" default.
+      if (roles.indexOf(pre) !== -1) {
+        return pre;
+      }
+    }
+    var l = n.toLowerCase();
+    if (l.indexOf("parathyroid") !== -1) return "parathyroid";
+    if (l.indexOf("thyroid") !== -1) return "thyroid";
+    if (l.indexOf("trachea") !== -1 || l.indexOf("laryng") !== -1 ||
+        l.indexOf("epiglottis") !== -1) return "airway";
+    return null;
+  }
+
+  var structures = {};
+  var want = {};
+  var needleGroup = null, probeGroup = null, nodule = null;
+  // The skin is a surface for steps 1-3, then gets OUT OF THE WAY. Measured: at
+  // 0.34-0.42 a white shell in front of the gland desaturates and washes out the
+  // anatomy behind it, which is what made the skin look ghostly. Once the gland
+  // is the subject the skin is only a faint edge cue.
+  // step 0 (setting) · 1 neck · 2 gland · 3 position · 4 nodule · 5 probe
+  // 6 needle · 7 passes · 8 withdrawn · 9 dressing · 10 after
+  var SKIN_OPACITY = [1.00, 1.00, 1.00, 1.00, 0.16, 0.14, 0.12, 0.12, 0.14, 0.30, 1.00];
+
+  var loader = new THREE.GLTFLoader();
+  loader.load("model/fnac_scene.glb", function (gltf) {
+    var obj = gltf.scene;
+
+    obj.traverse(function (o) {
+      if (!o.isMesh) return;
+      var role = classify(o.name) || classify(o.parent && o.parent.name) || "soft";
+      o.material = MATS[role];
+      if (!structures[role]) structures[role] = [];
+      structures[role].push(o);
+    });
+
+    // The GLB is authored in CENTIMETRES (the assembly measures ~333 units
+    // across) while the camera and sph.dist work in METRES. Scaling the model
+    // did not change what focusBox measured, so convert at the point of use:
+    // focusBox returns the box in the camera's units.
+    var box = new THREE.Box3().setFromObject(obj);
+    var c = box.getCenter(new THREE.Vector3());
+    var size = box.getSize(new THREE.Vector3());
+    obj.position.sub(c);
+    modelRadius = size.length() / 2;
+    modelSize.copy(size);
+    root.add(obj);
+
+    setupInstruments();
+    hideLoading();
+    buildLabels();
+    applyStep(0, true);
+    // Re-apply once after the first frame. applyStep at load time runs before
+    // any render, when freshly-registered groups still measure with stale world
+    // matrices - which collapsed the room step's camera fit to distance 0.
+    // One frame later every matrix is current and the fit is correct.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        // Force the re-fit: clear the guard first. applyStep(0) already set
+        // lastZoom = 0 at load, so re-applying without this hits the
+        // "level unchanged" branch and skips the fit - leaving the collapsed
+        // load-time distance uncorrected.
+        lastZoom = null;
+        applyStep(cur, true);
+      });
+    });
+  }, function (xhr) {
+      // xhr.total is 0 when the server does not send Content-Length
+      if (xhr && xhr.total) setLoading(xhr.loaded / xhr.total);
+    }, function () {
+    fail("The 3D model file could not be loaded.");
+  });
+
+  // ---- instruments -------------------------------------------------------
+  // Grouping the probe and needle parts lets one toggle drive each instrument.
+  // attach() is REQUIRED here: Group.add() re-parents a mesh and reinterprets
+  // its LOCAL coordinates, which threw both instruments off-screen. attach()
+  // preserves each mesh's world transform.
+  function setupInstruments() {
+    var nparts = (structures.needle || []).slice();
+    var pparts = (structures.probe || []).slice();
+
+    if (pparts.length) {
+      probeGroup = new THREE.Group();
+      probeGroup.name = "probeGroup";
+      pparts.forEach(function (m) { probeGroup.attach(m); });
+      root.add(probeGroup);
+    }
+    if (nparts.length) {
+      needleGroup = new THREE.Group();
+      needleGroup.name = "needleGroup";
+      nparts.forEach(function (m) { needleGroup.attach(m); });
+      root.add(needleGroup);
+    }
+
+    // The nodule is now its OWN role in the GLB, so it is never swept into the
+    // needle group and its visibility is independent of the needle toggle.
+    nodule = (structures.nodule || [])[0] || null;
+    if (nodule) nodule.renderOrder = 9;
+  }
+
+  // ---- skin opacity ramp -------------------------------------------------
+  function skinTargetFor(i) {
+    return SKIN_OPACITY[Math.max(0, Math.min(SKIN_OPACITY.length - 1, i))];
+  }
+
+  // 1.0 = a body surface; 0.30 = you can see the gland through it.
+  var skinTween = null;
+  function easeSkinTo(target) {
+    var m = MATS.skin;
+    if (!m) return;
+    var from = m.opacity;
+    if (Math.abs(from - target) < 0.001) {
+      m.opacity = target; m.transparent = target < 0.999;
+      m.depthWrite = target > 0.85; return;
+    }
+    if (skinTween) { cancelAnimationFrame(skinTween); skinTween = null; }
+    var t0 = null, dur = 700;
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur);
+      var e = k * k * (3 - 2 * k);
+      m.opacity = from + (target - from) * e;
+      m.transparent = m.opacity < 0.999;
+      // Once the skin is see-through it must NOT write depth, or it occludes the
+      // gland behind it inconsistently depending on draw order.
+      m.depthWrite = m.opacity > 0.85;
+      m.needsUpdate = true;
+      if (k < 1) { skinTween = requestAnimationFrame(frame); } else { skinTween = null; }
+    }
+    skinTween = requestAnimationFrame(frame);
+  }
+
+  // ---- needle passes -----------------------------------------------------
+  // Step 7 animates the needle back and forth ALONG ITS OWN AXIS - into the
+  // nodule and back out - rather than a generic shake, so the motion matches the
+  // trajectory the build produced.
+  var passPhase = 0;
+  var passAxis = null;
+  var passHome = null;
+  var passAmp = 0.006;          // 6 mm excursion either way, clinically sensible
+
+  function computePassAxis() {
+    if (!needleGroup) return;
+    var shaft = (structures.needle || []).filter(function (m) {
+      return (m.name || "").toLowerCase().indexOf("shaft") !== -1; })[0];
+    passHome = needleGroup.position.clone();
+    if (!shaft) { passAxis = new THREE.Vector3(0, 0, 1); return; }
+    shaft.geometry.computeBoundingBox();
+    var bb = shaft.geometry.boundingBox;
+    var sc = new THREE.Vector3(); bb.getCenter(sc);
+    var size = new THREE.Vector3(); bb.getSize(size);
+    // shaft's long axis, in the group's own frame
+    var axis = (size.x >= size.y && size.x >= size.z) ? new THREE.Vector3(1,0,0)
+             : (size.y >= size.z ? new THREE.Vector3(0,1,0) : new THREE.Vector3(0,0,1));
+    passAxis = axis.clone();
+    // orient it toward the nodule so +phase is "in"
+    var nd = (structures.nodule || [])[0];
+    if (nd) {
+      var V = needleGroup.position.constructor;
+      var np = new V(); nd.getWorldPosition(np);
+      var inv = new THREE.Matrix4().copy(needleGroup.matrixWorld).invert();
+      var npLocal = np.clone().applyMatrix4(inv);
+      var toNodule = npLocal.clone().sub(sc).normalize();
+      if (passAxis.dot(toNodule) < 0) passAxis.negate();
+    }
+  }
+
+  function applyPasses(dt) {
+    if (!needleGroup) return;
+    // only step 7 ("Several passes") shows the in-and-out motion
+    var active = (cur === 6);
+    if (!active) {
+      if (passHome) needleGroup.position.copy(passHome);
+      return;
+    }
+    if (!passAxis) computePassAxis();
+    if (!passAxis || !passHome) return;
+    passPhase += dt * 3.4;                       // ~1.8 passes per second
+    var off = Math.sin(passPhase) * passAmp;     // smooth in-and-out
+    needleGroup.position.copy(passHome).addScaledVector(passAxis, off);
+  }
+
+  // ---- camera focus ------------------------------------------------------
+  // Steps declare focus:"thyroid"/"procedure"/"neck"/"all". The old code
+  // declared it on every step and never read it, so the camera always framed
+  // the whole assembly and the gland was unreadable at 3.4 cm.
+  function focusGroup(which) {
+    if (which === "neck") {
+      return (structures.skin || []).concat(structures.skeletalmuscle || []);
+    }
+    if (which === "thyroid") {
+      return (structures.thyroid || []).concat(structures.parathyroid || []);
+    }
+    if (which === "nodule") {
+      // the gland plus the lump, so the nodule step shows WHERE it sits rather
+      // than filling the frame with a 1.6 cm sphere
+      var n = (structures.thyroid || []).concat(structures.parathyroid || []);
+      if (nodule) n = n.concat([nodule]);
+      return n;
+    }
+    if (which === "procedure") {
+      var g = (structures.thyroid || []).concat(structures.probe || [])
+                .concat(structures.needle || []);
+      if (nodule) g = g.concat([nodule]);
+      return g;
+    }
+    if (which === "room") {
+      // the setting step: bed, equipment, patient and clinician together
+      return (structures.room || [])
+        .concat(structures.patient || [])
+        .concat(structures.clinician || []);
+    }
+    if (which === "all") {
+      var all = [];
+      roles.forEach(function (r) { all = all.concat(structures[r] || []); });
+      return all;
+    }
+    return [];
+  }
+
+  function zoomToFocus(lvl) {
+    if (lvl === 0) return "room";        // the setting: bed, clinician, cart
+    if (lvl === 1) return "neck";        // neck surface, gland showing through
+    if (lvl === 2) return "thyroid";     // the gland and its position
+    if (lvl === 3) return "nodule";      // the lump, the subject of its step
+    if (lvl === 4) return "procedure";   // probe + needle + gland together
+    return "all";                        // whole assembly, closing step
+  }
+
+  // The GLB is in centimetres; the camera works in metres. Measure once and
+  // remember the factor, so every focus box comes back in camera units.
+  var MODEL_SCALE = null;
+  function modelScale() {
+    if (MODEL_SCALE !== null) return MODEL_SCALE;
+    var b = new THREE.Box3();
+    Object.keys(structures).forEach(function (r) {
+      structures[r].forEach(function (m) { b.expandByObject(m); });
+    });
+    if (b.isEmpty()) return (MODEL_SCALE = 1);
+    var sz = b.getSize(new THREE.Vector3());
+    // a human neck assembly is ~0.3 m across; >20 units means centimetres
+    MODEL_SCALE = (sz.length() > 20) ? 0.01 : 1;
+    return MODEL_SCALE;
+  }
+
+  function focusBox(which) {
+    var box = new THREE.Box3();
+    // Refresh from the ROOT down before measuring anything. A child's
+    // updateMatrixWorld() does not refresh its ancestors, so after the GLB is
+    // re-centred a freshly-visible group can still measure with a stale world
+    // matrix - which collapsed the room step's fit to distance 0.
+    root.updateMatrixWorld(true);
+    // and the model subtree, in case a scale/position change is pending
+    if (root.children.length) {
+      root.children.forEach(function (c) {
+        c.traverse(function (n) { n.updateMatrix(); n.updateMatrixWorld(true); });
+      });
+    }
+    var k = modelScale();
+    var OUT = function (b) {
+      if (k !== 1) { b.min.multiplyScalar(k); b.max.multiplyScalar(k); }
+      return b;
+    };
+    if (!which || which === "all") {
+      // Expand over root but SKIP the room. The room is ~2 m of scenery and
+      // belongs to the room step alone; counting it here parked the closing step
+      // 10x too far away.
+      var roomSet = {};
+      (structures.room || []).forEach(function (m) {
+        roomSet[m.uuid] = true;
+        m.traverse(function (c) { roomSet[c.uuid] = true; });   // and its subtree
+      });
+      root.traverse(function (n) {
+        if (!n.isMesh) return;
+        // hidden meshes must not inflate the box either: expandByObject does not
+        // consult .visible, so anything hidden would still widen the fit
+        if (!n.visible) return;
+        for (var a = n; a; a = a.parent) { if (roomSet[a.uuid]) return; }
+        box.expandByObject(n);
+      });
+      if (box.isEmpty()) box.expandByObject(root);
+      return OUT(box);
+    }
+    var list = focusGroup(which);
+    if (!list.length) { box.expandByObject(root); return OUT(box); }
+    list.forEach(function (m) {
+      // Force the world matrix current BEFORE measuring. Without this the first
+      // fit of a group that was only just made visible reads an empty box and
+      // the camera collapses to the origin.
+      m.updateMatrixWorld(true);
+      if (!m.geometry.boundingBox) m.geometry.computeBoundingBox();
+      box.expandByObject(m);
+    });
+    box = OUT(box);
+    var sz = box.getSize(new THREE.Vector3());
+    if (sz.length() < 0.02) box.expandByScalar(0.02);
+    return box;
+  }
+
+  // ---- debug handles -----------------------------------------------------
+  window.__dbg = {
+    get root() { return root; },
+    get scene() { return scene; },
+    get camera() { return camera; },
+    get sph() { return sph; },
+    get camDist() { return camDist; },
+    get zoomLevel() { return lastZoom; },
+    get structures() { return structures; },
+    get roles() { return roles; },
+    get nodule() { return nodule; },
+    get needleGroup() { return needleGroup; },
+    get probeGroup() { return probeGroup; },
+    get step() { return cur; },
+    get skinOpacity() { return MATS.skin ? MATS.skin.opacity : null; },
+    get fitCamera() { return fitCamera; },
+    get focusBox() { return focusBox; },
+    get focusGroup() { return focusGroup; },
+    get zoomToFocus() { return zoomToFocus; },
+    get refresh() { return refreshVisibility; }
+  };
+
+  // Fit the camera so the model FILLS the viewport. A fixed multiple of the
+  // bounding-sphere radius left the model small and top-heavy, because the
+  // assembly is tall and narrow (about 20 cm) while the stage is wide and short.
+  // Zoom level per step. Only a change of level re-frames the camera, so the
+  // framing is CONSTANT while the procedure runs instead of wobbling per step.
+  //   0 = whole assembly   1 = neck     2 = thyroid close   3 = procedure
+  // One entry per step, in step order:
+  //   1 neck 0 · 2 gland 1 · 3 position 1 · 4 nodule 2 · 5 probe 3
+  //   6 needle 3 · 7 passes 3 · 8 withdrawn 3 · 9 dressing 1 · 10 after 0
+  // Levels: 0 whole assembly · 1 neck · 2 nodule close · 3 procedure.
+  // Levels: 0 room (step 0 only) · 1 neck · 2 gland · 3 nodule · 4 procedure
+  // 5 whole assembly (the closing step).
+  // Step:  1 room · 2 neck · 3 gland · 4 position · 5 nodule · 6 probe
+  //        7 needle · 8 passes · 9 withdrawn · 10 dressing · 11 after
+  var ZOOM_LEVEL = [0, 1, 1, 2, 3, 4, 4, 4, 4, 2, 5];
+  var lastZoom = null;
+  var pendingView = null;
+  var lastAngle = null;
+
+  function fitCamera(which) {
+    var box = focusBox(which);
+
+    // Widen the measured box to everything that is actually on screen. A named
+    // focus covers one group, but a step may show several (the thyroid step also
+    // shows the airway, which reaches past the gland). Fitting the narrower box
+    // put the camera inside the subject.
+    if (which !== "room" && which !== "all" && structures) {
+      var visibleBox = new THREE.Box3();
+      var anyVisible = false;
+      Object.keys(structures).forEach(function (r) {
+        if (r === "room" || r === "patient" || r === "clinician") return;
+        structures[r].forEach(function (m) {
+          if (!m.visible) return;
+          var mb = new THREE.Box3().setFromObject(m);
+          if (!mb.isEmpty()) { visibleBox.union(mb); anyVisible = true; }
+        });
+      });
+      if (anyVisible && !visibleBox.isEmpty()) {
+        // Guard against a stray far-off mesh blowing the frame open: use the
+        // union only when it is a sane multiple of the named focus.
+        var vs = visibleBox.getSize(new THREE.Vector3());
+        var ns = box.getSize(new THREE.Vector3());
+        var vmax = Math.max(vs.x, vs.y, vs.z);
+        var nmax = Math.max(ns.x, ns.y, ns.z, 1e-6);
+        if (vmax / nmax < 12) box = visibleBox;
+      }
+    }
+    var c0 = box.getCenter(new THREE.Vector3());
+    box = new THREE.Box3().copy(box);
+    var c = box.getCenter(new THREE.Vector3());
+    var size = box.getSize(new THREE.Vector3());
+    target.copy(c);
+
+    // Frontal framing: force the orbit angles for this step's view BEFORE the
+    // distance is computed, so the fit is measured along the direction the
+    // camera will actually sit in. Without this the fit was computed for an
+    // arbitrary angle and the view opened oblique.
+    if (pendingView) { setView(pendingView); pendingView = null; }
+
+    // ---- measured framing ------------------------------------------------
+    // Project the box's 8 corners along the ACTUAL view direction and scale the
+    // distance until the subject fills targetFill of the frame. This replaces a
+    // hand-tuned multiplier that took the largest of three candidate distances,
+    // which is why the subject always sat small and zoomed out.
+    //
+    // fill is per focus: the room wants to show the whole scene, the gland and
+    // nodule want to fill the frame so detail is legible.
+    var FILL = {
+      // Must stay < 1: the fit takes the max of the two axis requirements, so a
+      // fill near 1 on the limiting axis pushes the OTHER axis past the frame
+      // (measured 107-117% wide on four steps). 0.82 leaves a border.
+      // 0.82 pulled the camera back too far and the swarm read the result as
+      // "small with excessive empty margins". Keep below 1 (so the non-limiting
+      // axis still fits) but close to it.
+      room: 0.72, all: 0.96, neck: 0.96, thyroid: 0.97,
+      nodule: 0.97, procedure: 0.96, dressing: 0.96
+    };
+    var targetFill = FILL[which] || 0.90;
+
+    var corners = [
+      new THREE.Vector3(box.min.x, box.min.y, box.min.z),
+      new THREE.Vector3(box.max.x, box.min.y, box.min.z),
+      new THREE.Vector3(box.min.x, box.max.y, box.min.z),
+      new THREE.Vector3(box.max.x, box.max.y, box.min.z),
+      new THREE.Vector3(box.min.x, box.min.y, box.max.z),
+      new THREE.Vector3(box.max.x, box.min.y, box.max.z),
+      new THREE.Vector3(box.min.x, box.max.y, box.max.z),
+      new THREE.Vector3(box.max.x, box.max.y, box.max.z)
+    ];
+
+    // Build the camera basis for the CURRENT orbit angles and express every
+    // corner in VIEW SPACE. This needs no camera state - an earlier attempt
+    // projected through the live camera (still holding the old transform), which
+    // produced nonsense extents and distances of 20 m.
+    var sphi = Math.sin(sph.phi), cphi = Math.cos(sph.phi);
+    var st = Math.sin(sph.theta), ct = Math.cos(sph.theta);
+    // camera sits at c + dir*dist, looking at c; so "depth" is -dir
+    var right = new THREE.Vector3(ct, 0, -st).normalize();     // screen +X
+    var up    = new THREE.Vector3(-cphi * st, sphi, -cphi * ct).normalize(); // screen +Y
+    var vFov = camera.fov * Math.PI / 180;
+    var tanV = Math.tan(vFov / 2);
+    var tanH = tanV * camera.aspect;
+
+    // TRUE frustum fit, corner by corner. The old form measured the box's
+    // half-extents about its CENTRE, which ignores that corners nearer the
+    // camera subtend a wider angle - so off-centre subjects spilled past the
+    // frame (measured 104-117% wide even after the fill fraction was lowered).
+    // Each corner sits at depth depth_i along the view axis and offset u_i in
+    // screen X/Y, so the required distance is depth_i + |u_i| / (tan * fill).
+    var viewDir = new THREE.Vector3(st * cphi, sphi, ct * cphi).normalize();
+    var v = new THREE.Vector3();
+    var d = 0;
+    for (var i = 0; i < corners.length; i++) {
+      v.copy(corners[i]).sub(c);
+      var depth = v.dot(viewDir);            // + = nearer the camera
+      var ux = Math.abs(v.dot(right));
+      var uy = Math.abs(v.dot(up));
+      d = Math.max(d, depth + uy / (tanV * targetFill));
+      d = Math.max(d, depth + ux / (tanH * targetFill));
+    }
+    if (!isFinite(d) || d <= 0) d = 0.5;
+
+    // Vertical centring: the orbit target must sit at the box's centre in the
+    // camera's UP axis too, or the subject rides high and leaves a dead band
+    // below. Offset the target along `up` when the box's centre is off-axis.
+    var offUp = new THREE.Vector3().copy(c).sub(target).dot(up);
+    if (Math.abs(offUp) > 1e-6) {
+      target.addScaledVector(up, offUp);
+    }
+    if (controls) { controls.target.copy(target); controls.update(); }
+    camDist = d;
+    sph.dist = d;
+    placeCamera();
+  }
+
+  function placeCamera() {
+    var d = sph.dist;
+    if (controls) {
+      // Update the controls FIRST (they own the clamps and the target), then set
+      // the final position. Doing it the other way round let controls.update()
+      // re-derive the position from its own state and discard the fitted
+      // distance - which is what kept the subject zoomed out.
+      controls.target.copy(target);
+      controls.update();
+    }
+    d = Math.min(Math.max(d, controls ? controls.minDistance : 0.02),
+                 controls ? controls.maxDistance : 6.0);
+    sph.dist = d;
+    // Offset from the TARGET, not from the origin. Using the origin put the
+    // camera the right distance from (0,0,0) and the wrong distance from the
+    // subject whenever the focus was off-centre - the thyroid sits ~37 cm out.
+    var off = new THREE.Vector3(
+      d * Math.sin(sph.phi) * Math.sin(sph.theta),
+      d * Math.cos(sph.phi),
+      d * Math.sin(sph.phi) * Math.cos(sph.theta));
+    camera.position.copy(target).add(off);
+    camera.lookAt(target);
+    if (controls) {
+      controls.update();
+    }
+  }
+
+  function setView(name) {
+    var v = VIEWS[name] || VIEWS.front;
+    sph.theta = v.theta;
+    sph.phi = v.phi;
+    // distance is set by fitCamera for the CURRENT step's focus; do not force
+    // it back to a whole-model distance here or the zoom is lost.
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".cam button"), function (b) {
+    b.addEventListener("click", function () { setView(b.getAttribute("data-view")); });
+  });
+
+  // ---- step machinery ----
+  var cur = 0, playing = false, timer = null;
+
+  // Single source of truth for what is shown. Reading the checkboxes back out
+  // of the DOM meant a step could silently fight the user's manual toggles.
+  var want = { thyroid: true, airway: true, parathyroid: true, soft: true };
+
+  function cbFor(r) {
+    return document.getElementById("c" + r.charAt(0).toUpperCase() + r.slice(1));
+  }
+
+  function syncBoxes() {
+    roles.forEach(function (r) {
+      var cb = cbFor(r);
+      if (cb) cb.checked = !!want[r];
+    });
+  }
+
+  function applyStep(i, silent) {
+    cur = Math.max(0, Math.min(STEPS.length - 1, i));
+    var s = STEPS[cur];
+
+    roles.forEach(function (r) { want[r] = !!s.show[r]; });
+    syncBoxes();
+    refreshVisibility();
+
+    // The nodule is shown from step 4 ("The nodule") onward.
+    if (nodule) nodule.visible = (cur >= 3);
+
+    passPhase = 0;
+    if (!passAxis && needleGroup) computePassAxis();
+    // The dressing belongs to the steps that describe it being applied: the
+    // needle is withdrawn at step 8 and the dressing is on from there.
+    if (structures.dressing) {
+      var wantDressing = (cur >= 7);
+      structures.dressing.forEach(function (m) { m.visible = wantDressing; });
+    }
+
+    easeSkinTo(skinTargetFor(cur));
+    // Re-frame when EITHER the zoom level OR the view angle changes. Holding one
+    // framing across the procedure is what Alex asked for, but a frontal and an
+    // oblique framing need different distances: skipping the fit on an angle
+    // change left the view turned but still zoomed out.
+    var lvl = ZOOM_LEVEL[Math.min(cur, ZOOM_LEVEL.length - 1)];
+    var camName = s.cam || "front";
+    var v = VIEWS[camName] || VIEWS.front;
+    var angleChanged = (lastAngle === null ||
+                        Math.abs(v.theta - lastAngle.t) > 1e-4 ||
+                        Math.abs(v.phi   - lastAngle.p) > 1e-4);
+    if (lvl !== lastZoom || angleChanged) {
+      pendingView = camName;
+      fitCamera(zoomToFocus(lvl));
+      lastZoom = lvl;
+      lastAngle = { t: v.theta, p: v.phi };
+    } else {
+      setView(camName);
+    }
+    placeCamera();
+
+    showDiagram(cur === 0);
+
+    narr.innerHTML = "<strong>Step " + (cur + 1) + ".</strong> " + s.d;
+    counter.textContent = (cur + 1) + " / " + STEPS.length;
+
+    var rows = steplist.querySelectorAll(".step");
+    Array.prototype.forEach.call(rows, function (row, k) {
+      row.setAttribute("aria-current", k === cur ? "true" : "false");
+    });
+  }
+
+  function refreshVisibility() {
+    roles.forEach(function (r) {
+      (structures[r] || []).forEach(function (m) { m.visible = !!want[r]; });
+    });
+  }
+
+  function buildStepList() {
+    STEPS.forEach(function (s, i) {
+      var li = document.createElement("div");
+      li.className = "step";
+      li.setAttribute("role", "button");
+      li.setAttribute("tabindex", "0");
+      li.innerHTML = '<span class="num">' + (i + 1) + '</span>' +
+        '<span><span class="t">' + s.t + '</span><span class="d">' + s.d + '</span></span>';
+      li.addEventListener("click", function () { applyStep(i); });
+      li.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); applyStep(i); }
+      });
+      steplist.appendChild(li);
+    });
+  }
+
+  buildStepList();
+
+  roles.forEach(function (r) {
+    var cb = cbFor(r);
+    if (cb) cb.addEventListener("change", function () {
+      want[r] = cb.checked;
+      refreshVisibility();
+    });
+  });
+
+  document.getElementById("back").addEventListener("click", function () { applyStep(cur - 1); });
+  document.getElementById("fwd").addEventListener("click", function () { applyStep(cur + 1); });
+
+  var spinBox = document.getElementById("cSpin");
+  var spin = 0;
+  spinBox.addEventListener("change", function () { spin = spinBox.checked ? 1 : 0; });
+
+  document.getElementById("play").addEventListener("click", function () {
+    if (playing) {
+      playing = false; clearInterval(timer);
+      this.textContent = "Play"; return;
+    }
+    playing = true; this.textContent = "Pause";
+    timer = setInterval(function () {
+      if (cur >= STEPS.length - 1) {
+        playing = false; clearInterval(timer);
+        document.getElementById("play").textContent = "Play"; return;
+      }
+      applyStep(cur + 1);
+    }, 2800);
+  });
+
+  // ---- render loop. setInterval watchdog because requestAnimationFrame is
+  // throttled to zero on a non-compositing tab, which looks like a frozen app.
+  function resize() {
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener("resize", resize);
+
+  var lastT = performance.now();
+  function tick() {
+    var now = performance.now();
+    var dt = Math.min((now - lastT) / 1000, 0.1);
+    lastT = now;
+    if (spin) { sph.theta += dt * 0.42; }
+    applyPasses(dt);
+    if (controls) { controls.update(); } else { placeCamera(); }
+    renderer.render(scene, camera);
+  }
+  setInterval(tick, 33);
+  window.addEventListener("resize", resize);
+  resize();
+  applyStep(0, true);
+
+  // nudge the hint once, then fade it
+  setTimeout(function () { hint.classList.add("on"); }, 400);
+  setTimeout(function () { hint.classList.remove("on"); }, 4200);
+
+  // The step text must be usable without the 3D view at all.
+  if (typeof THREE === "undefined") { buildStepList(); }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+{
+ "corpus_includes_footer": true,
+ "kept": [
+  {
+   "type": "unclear",
+   "where": "step 3",
+   "quote": "The gland rests against the trachea, with a lobe on each side.",
+   "why": "I don't know these two words, they are hard for me to read.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "worry",
+   "where": "step 4",
+   "quote": "A nodule is an area within the gland that is being sampled.",
+   "why": "I am afraid this nodule is a serious sickness or cancer.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "worry",
+   "where": "step 6",
+   "quote": "A fine needle is passed through the skin into the nodule.",
+   "why": "The word needle already makes me nervous and my hands sweat.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "worry",
+   "where": "step 7",
+   "quote": "The needle is moved back and forth within the nodule several times.",
+   "why": "To move the needle many times inside sounds painful and scary.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "unclear",
+   "where": "footer",
+   "quote": "Explanatory text is not part of the approved procedure information sheet.",
+   "why": "I don't know what this means, it only confuses me more.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "good",
+   "where": "step 9",
+   "quote": "Results are usually available in 1\u20132 weeks.",
+   "why": "It is nice to know how long I must wait for my answers.",
+   "persona": "P1_low_literacy_elderly",
+   "persona_label": "72, primary school, Mandarin-dominant, reads slowly, anxious"
+  },
+  {
+   "type": "worry",
+   "where": "step 8",
+   "quote": "The dressing stays on for 1\u20132 hours.",
+   "why": "I don't know who removes it or whether I can keep it on while at work.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "missing",
+   "where": "step 9",
+   "quote": "Results are usually available in 1\u20132 weeks.",
+   "why": "Nothing says how long the actual appointment takes or if I need a day off work.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "unclear",
+   "where": "step 6",
+   "quote": "You may feel a slight pin prick from the needle.",
+   "why": "I'm not sure if the rest hurts or whether they numb the area first.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "missing",
+   "where": "step 8",
+   "quote": "an adhesive dressing is applied",
+   "why": "It doesn't say whether I can drive myself home or need someone to accompany me.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "good",
+   "where": "step 9",
+   "quote": "Results are usually available in 1\u20132 weeks.",
+   "why": "Good to know I won't be left waiting months for the answer.",
+   "persona": "P2_working_adult",
+   "persona_label": "45, ITE/polytechnic, working adult, pragmatic, time-poor"
+  },
+  {
+   "type": "worry",
+   "where": "step 4",
+   "quote": "A nodule is an area within the gland that is being sampled.",
+   "why": "This tells me nothing about what a nodule actually is or whether it could be cancer, which is the whole reason I am having this test.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "unclear",
+   "where": "step 7",
+   "quote": "The needle is moved back and forth within the nodule several times.",
+   "why": "'Several times' is vague and I want to know exactly how many passes will be made before the needle comes out.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "worry",
+   "where": "step 9",
+   "quote": "Results are usually available in 1\u20132 weeks.",
+   "why": "The word 'usually' worries me because I do not know what happens if my results take longer or are never ready.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "worry",
+   "where": "footer",
+   "quote": "Explanatory text is not part of the approved procedure information sheet.",
+   "why": "This makes me doubt whether all this explanation is official and trustworthy or just an afterthought.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "missing",
+   "where": "step 8",
+   "quote": "The dressing stays on for 1\u20132 hours.",
+   "why": "It says nothing about what to do once the dressing comes off, such as showering or watching for bleeding.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "good",
+   "where": "step 6",
+   "quote": "You may feel a slight pin prick from the needle.",
+   "why": "This reassures me about the pain and tells me exactly what to expect when the needle goes in.",
+   "persona": "P3_graduate_anxious",
+   "persona_label": "34, university graduate, health-anxious, reads closely"
+  },
+  {
+   "type": "worry",
+   "where": "step 6",
+   "quote": "You may feel a slight pin prick from the needle.",
+   "why": "It tells us we might feel the needle but never says whether they will numb the area first, so I worry my parent will hurt.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "worry",
+   "where": "step 7",
+   "quote": "The needle is moved back and forth within the nodule several times.",
+   "why": "Hearing a needle pushed back and forth inside worries me; it sounds uncomfortable for my elderly parent.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "unclear",
+   "where": "step 8",
+   "quote": "The dressing stays on for 1\u20132 hours.",
+   "why": "It doesn't say when to take it off or whether my parent can wash, so I don't know what to do afterwards.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "unclear",
+   "where": "footer",
+   "quote": "Explanatory text is not part of the approved procedure information sheet.",
+   "why": "This confuses me; if these words aren't approved, how can I trust them to explain the procedure to my parent?",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  },
+  {
+   "type": "good",
+   "where": "step 6",
+   "quote": "A fine needle is passed through the skin into the nodule.",
+   "why": "It reassures me that a very fine needle is used, so the procedure sounds gentle rather than scary.",
+   "persona": "P4_caregiver",
+   "persona_label": "50, caregiver reading on behalf of an elderly parent"
+  }
+ ],
+ "dropped": [],
+ "consensus": {
+  "step 4": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ],
+  "step 6": [
+   "P1_low_literacy_elderly",
+   "P2_working_adult",
+   "P4_caregiver"
+  ],
+  "step 7": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious",
+   "P4_caregiver"
+  ],
+  "footer": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious",
+   "P4_caregiver"
+  ],
+  "step 8": [
+   "P2_working_adult",
+   "P3_graduate_anxious",
+   "P4_caregiver"
+  ],
+  "step 9": [
+   "P2_working_adult",
+   "P3_graduate_anxious"
+  ]
+ }
+}

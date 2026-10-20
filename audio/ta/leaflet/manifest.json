@@ -1,0 +1,112 @@
+{
+ "engine": "omnivoice",
+ "voice": "OmniVoice k2-fsa/OmniVoice, one cloned reference voice for every step",
+ "files": [
+  "audio/ta/leaflet/step01.mp3",
+  "audio/ta/leaflet/step02.mp3",
+  "audio/ta/leaflet/step03.mp3",
+  "audio/ta/leaflet/step04.mp3",
+  "audio/ta/leaflet/step05.mp3",
+  "audio/ta/leaflet/step06.mp3",
+  "audio/ta/leaflet/step07.mp3",
+  "audio/ta/leaflet/step08.mp3",
+  "audio/ta/leaflet/step09.mp3"
+ ],
+ "steps": {
+  "step01": {
+   "step": 1,
+   "title": "உங்கள் கழுத்தும் தைராய்டும்",
+   "characters": 212,
+   "words": 27,
+   "duration_s": 14.36,
+   "bytes": 86661,
+   "wpm": 112.8,
+   "engine": "omnivoice"
+  },
+  "step02": {
+   "step": 2,
+   "title": "கட்டியைக் கண்டறிதல்",
+   "characters": 202,
+   "words": 22,
+   "duration_s": 14.0,
+   "bytes": 84501,
+   "wpm": 94.3,
+   "engine": "omnivoice"
+  },
+  "step03": {
+   "step": 3,
+   "title": "தோலைத் தயாரித்தல்",
+   "characters": 167,
+   "words": 20,
+   "duration_s": 11.64,
+   "bytes": 70461,
+   "wpm": 103.1,
+   "engine": "omnivoice"
+  },
+  "step04": {
+   "step": 4,
+   "title": "அல்ட்ராசவுண்ட் ப்ரோப்பை வைத்தல்",
+   "characters": 222,
+   "words": 26,
+   "duration_s": 15.16,
+   "bytes": 91629,
+   "wpm": 102.9,
+   "engine": "omnivoice"
+  },
+  "step05": {
+   "step": 5,
+   "title": "ஊசியைச் சீரமைத்தல்",
+   "characters": 145,
+   "words": 18,
+   "duration_s": 10.12,
+   "bytes": 61389,
+   "wpm": 106.7,
+   "engine": "omnivoice"
+  },
+  "step06": {
+   "step": 6,
+   "title": "ஊசி உள்ளே செல்லும்",
+   "characters": 217,
+   "words": 28,
+   "duration_s": 14.32,
+   "bytes": 86445,
+   "wpm": 117.3,
+   "engine": "omnivoice"
+  },
+  "step07": {
+   "step": 7,
+   "title": "செல்களைச் சேகரித்தல்",
+   "characters": 189,
+   "words": 24,
+   "duration_s": 12.8,
+   "bytes": 77373,
+   "wpm": 112.5,
+   "engine": "omnivoice"
+  },
+  "step08": {
+   "step": 8,
+   "title": "ஊசி வெளியே வரும்",
+   "characters": 160,
+   "words": 20,
+   "duration_s": 11.12,
+   "bytes": 67221,
+   "wpm": 107.9,
+   "engine": "omnivoice"
+  },
+  "step09": {
+   "step": 9,
+   "title": "அதன் பிறகு, உங்கள் முடிவுகள்",
+   "characters": 328,
+   "words": 40,
+   "duration_s": 22.68,
+   "bytes": 136557,
+   "wpm": 105.8,
+   "engine": "omnivoice"
+  }
+ },
+ "total": {
+  "duration_s": 126.2,
+  "bytes": 762237,
+  "steps": 9
+ }
+}

@@ -1,0 +1,253 @@
+</head>
+<body>
+
+<div class="bar">
+  <div class="inner">
+    <div class="brand" data-i18n="k65">Thyroid FNAC · Patient Guide</div>
+    <div class="ctrls">
+      <label class="langpick"><select id="langPick" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ms">Bahasa Melayu</option>
+        <option value="ta">தமிழ்</option>
+        <option value="zh">中文</option>
+        <option value="yue">粤语</option>
+        <option value="nan">闽南语</option>
+      </select></label>
+      <button class="ctrl" id="btnSize" aria-pressed="false" data-i18n="k01">Larger text</button>
+      <button class="ctrl" id="btnContrast" aria-pressed="false" data-i18n="k02">High contrast</button>
+      <button class="ctrl" id="btnPrint" data-i18n="k03">Print</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker" data-i18n="k66">Fine Needle Aspiration Cytology</div>
+    <h1 data-i18n="k82">You've been told you need a thyroid FNAC. Here's what that means.</h1>
+    <p class="lede" data-i18n="k04">A fine needle aspiration takes a few cells from a lump in your
+    thyroid, so a pathologist can look at them under a microscope and work out what
+    the lump is. This page explains what it is, what happens on the day, what you'll
+    feel, and what comes after.</p>
+
+    <div class="facts">
+      <div class="fact"><div class="k" data-i18n="k67">Usually takes</div><div class="v" data-i18n="k38">Approximately 30 minutes</div></div>
+      <div class="fact"><div class="k" data-i18n="k68">Anaesthetic</div><div class="v" data-i18n="k39">Local anaesthesia (optional)</div></div>
+      <div class="fact"><div class="k" data-i18n="k69">Needle size</div><div class="v" data-i18n="k40">
+      Fine, slightly thinner than a blood-taking needle
+    </div></div>
+      <div class="fact"><div class="k" data-i18n="k70">Results</div><div class="v" data-i18n="k41">About 2 weeks</div></div>
+    </div>
+
+    <details class="shortcut">
+      <summary data-i18n="k05">In a hurry? The whole thing in five lines</summary>
+      <ul>
+        <li data-i18n="k06">A lump in your thyroid needs checking, and a scan alone can't say what it is.</li>
+        <li data-i18n="k07">A very fine needle takes a few cells from the lump, guided by ultrasound.</li>
+        <li data-i18n="k08">You lie back with your neck gently extended. It usually takes approximately 30 minutes.</li>
+        <li data-i18n="k09">The needle goes in and out a few times. Most people find it quicker and
+        less uncomfortable than they expected.</li>
+        <li data-i18n="k10">You go home the same day. Results usually take about 2 weeks, and you
+        should come back for the follow-up appointment.</li>
+      </ul>
+    </details>
+  </div>
+
+  <section>
+    <h2 data-i18n="k83"><span class="num">1</span> What a thyroid nodule actually is</h2>
+    <p data-i18n="k11">A thyroid nodule is an <strong>abnormal growth of thyroid cells into a lump</strong>
+    inside your thyroid. The thyroid is a gland at the front of your neck, below your
+    voice box, that makes hormones controlling how your body uses energy.</p>
+    <p data-i18n="k12"><strong>Most thyroid nodules are benign</strong> — that means non-cancerous.
+    But some can be cancerous, and no one can tell just by looking at your neck.
+    That is why your doctor has asked for this test.</p>
+    <div class="note" data-i18n="k42">
+      Thyroid nodules are common, and most are benign. Most people with one are simply monitored, but a small number need further tests or treatment — that is what the FNAC is checking.
+    </div>
+  </section>
+
+  <section>
+    <h2 data-i18n="k84"><span class="num">2</span> Why you need this test</h2>
+    <p data-i18n="k13">The purpose of the FNAC is <strong>to find out the nature of the nodule and to
+    try to rule out the possibility of cancer</strong> in your thyroid gland.</p>
+    <p data-i18n="k14">FNAC is the standard first test for this. It gives your doctor real
+    information — enough to decide whether you need treatment, further tests, or
+    simply to be monitored.</p>
+  </section>
+
+  <section>
+    <h2 data-i18n="k85"><span class="num">3</span> The procedure, step by step</h2>
+    <p data-i18n="k15">Tap any step below, or press play, to watch what happens. You can drag the
+    picture to rotate it, and pause at any point.</p>
+
+    <div class="stage">
+      <canvas id="gl" role="img"
+        aria-label="3D animation of the thyroid and the FNAC needle. A text description of every step is given underneath this animation."
+        tabindex="0"></canvas>
+      <div class="scene-labels" id="sceneLabels" aria-hidden="true"></div>
+    </div>
+
+    <!-- Everything that used to float over the 3D now sits below it. The step bubble was absolutely
+         positioned across the bottom of the stage and covered the part of the neck the needle moves
+         through, so the passes were hidden behind the text. Only the anatomy callouts stay in the
+         picture, because they point at structures. -->
+    <div class="stage-bar">
+      <div class="step-label" id="stepLabel" aria-live="polite"><b>Step 1 of 9.</b> Your neck and your thyroid.</div>
+      <button class="play" id="btnPlay" data-i18n="k16">▶ Play</button>
+    </div>
+    <div class="stage-meta">
+      <div class="badge" data-i18n="k71">Drag to rotate · pinch or scroll to zoom</div>
+      <div class="legend" aria-hidden="true">
+        <div data-i18n="k81"><i style="background:#e07f8f"></i>Thyroid gland</div>
+        <div data-i18n="k43"><i style="background:#9b2233"></i>Nodule</div>
+        <div data-i18n="k44"><i style="background:#dfe3e8"></i>Trachea (windpipe)</div>
+        <div data-i18n="k45"><i style="background:#f2f5f8"></i>Needle</div>
+        <div data-i18n="k46"><i style="background:#3d4553"></i>Ultrasound probe</div>
+      </div>
+    </div>
+
+  <div class="stepnav" id="stepnav" role="group" aria-label="Step navigation">
+    <button class="navbtn" id="btnPrev" type="button" data-i18n="k17">◀ Back</button>
+    <span class="stepcount" id="stepCount" aria-live="polite" data-i18n="k18">1 / 9</span>
+    <button class="navbtn" id="btnNext" type="button" data-i18n="k19">Next ▶</button>
+    <button class="navbtn" id="btnSound" type="button" aria-pressed="false" data-i18n="k20">🔊 Sound on</button>
+  </div>
+
+    <div class="steps" id="steps" role="tablist" aria-label="Procedure steps"></div>
+
+    <div class="note" id="stepNote" role="status"></div>
+
+    <div class="sr" id="srText" aria-live="polite"></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="k86"><span class="num">4</span> What you'll feel</h2>
+    <p data-i18n="k21">This is what people worry about most, so here it is honestly:</p>
+    <ul>
+      <li data-i18n="k22"><strong>Pressure on your neck</strong> from the ultrasound probe resting there.</li>
+      <li data-i18n="k23"><strong>A slight pin prick</strong> from the needle. It is finer than the
+      needle used for a routine blood test.</li>
+      <li data-i18n="k24"><strong>Some pressure</strong> as the samples are taken.</li>
+      <li data-i18n="k25">You may feel very little. Most people describe it as
+      <strong>quick, and less uncomfortable than they expected</strong>.</li>
+    </ul>
+    <p data-i18n="k26">You'll be asked to <strong>stay as still as you can</strong> and to
+    <strong>avoid coughing, talking or swallowing</strong> while the needle is in,
+    because those movements shift the thyroid and make accurate placement harder.</p>
+  </section>
+
+  <section>
+    <h2 data-i18n="k87"><span class="num">5</span> How it's done</h2>
+    <div class="card">
+      <p data-i18n="k27">The procedure is done by <strong>inserting a fine needle into the nodule and
+      making several passes</strong> to obtain a small sample of tissue, which is sent
+      to the laboratory for evaluation.</p>
+      <p data-i18n="k28">It is carried out <strong>under ultrasound guidance</strong> so the needle is
+      placed accurately — using the same scanning that found the nodule.</p>
+      <p data-i18n="k29">You will usually be offered a <strong>local anaesthetic injection</strong> to
+      numb the site. It is optional, but it is commonly given.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-i18n="k88"><span class="num">6</span> Before the procedure</h2>
+    <p data-i18n="k30">Usually <strong>no preparation is needed</strong>.</p>
+    <p data-i18n="k31">
+      Tell your doctor if you are on any blood thinners or antiplatelets — medicines such as warfarin, rivaroxaban, aspirin or clopidogrel. Tell them before the procedure, and do not stop any of these on your own. Your doctor will say whether any should be paused, and when to restart them.
+    </p>
+    <div class="check"><div class="box" aria-hidden="true"></div><div data-i18n="k47">Tell your doctor
+    about any blood thinners or antiplatelet medicines you take.</div></div>
+    <div class="check"><div class="box" aria-hidden="true"></div><div data-i18n="k48">You do not
+    normally need to stop eating or drinking beforehand.</div></div>
+    <div class="check"><div class="box" aria-hidden="true"></div><div data-i18n="k49">Wear something
+    comfortable that lets your neck be reached easily.</div></div>
+    <div class="check"><div class="box" aria-hidden="true"></div><div data-i18n="k50">Write down your
+    questions — nothing is too small to ask.</div></div>
+  </section>
+
+  <section>
+    <h2 data-i18n="k89"><span class="num">7</span> Risks and complications</h2>
+    <p data-i18n="k32">
+      FNAC is generally safe. Minor effects such as slight pain, bruising or swelling are common but usually settle quickly; serious complications are rare. These are the risks your doctor wants you to know about:
+    </p>
+    <div class="riskgrid">
+      <div class="risk"><div class="h" data-i18n="k72">Bruising, bleeding, swelling or pain</div>
+        <div class="d" data-i18n="k51">At the puncture site.</div>
+        <span class="sev common" data-i18n="k33">Can happen</span></div>
+      <div class="risk"><div class="h" data-i18n="k73">A non-diagnostic result</div>
+        <div class="d" data-i18n="k52">In up to about 20% of cases not enough cells are sampled for the
+        pathologist to make a clear diagnosis.</div>
+        <span class="sev common" data-i18n="k34">Up to about 20% of tests</span></div>
+      <div class="risk"><div class="h" data-i18n="k74">Significant swelling or breathing problems</div>
+        <div class="d" data-i18n="k53">From bleeding. It is exceptionally rare for bleeding to cause
+        this — but it is why you must seek help if it happens.</div>
+        <span class="sev vrare" data-i18n="k35">Exceptionally rare</span></div>
+    </div>
+
+    <div class="sheet-note" style="margin-top:20px" data-i18n="k54">
+      Up to about 20% of FNAC results may return as non-diagnostic or inadequate, because not enough cells were sampled for the pathologist to make a clear diagnosis. If this happens, the usual next step is to repeat the test — another small sample is taken — and your doctor will discuss whether any further tests are needed.
+    </div>
+
+    <div class="sheet-note" data-i18n="k55">
+      These complications are not intended to be exhaustive and may vary
+      depending on underlying medical condition. They are NOT meant to be,
+      and CANNOT be, exhaustive.
+    </div>
+
+    <div class="note" data-i18n="k56">
+      A non-diagnostic result does not mean something is wrong. It means there were not enough cells to be certain; the test is usually repeated, and your doctor will discuss what to do next.
+    </div>
+  </section>
+
+  <section>
+    <h2 data-i18n="k90"><span class="num">8</span> After the procedure</h2>
+    <div class="tl">
+      <div class="item good"><div class="when" data-i18n="k75">First 1–2 hours</div>
+        <div class="what" data-i18n="k57">Leave the adhesive dressing over the puncture site in place.
+        After that it can be removed, and the area washed if you want to.</div></div>
+      <div class="item good"><div class="when" data-i18n="k76">Straight away</div>
+        <div class="what" data-i18n="k58">
+      You can go back to usual, non-strenuous activities, including eating and drinking.
+    </div></div>
+      <div class="item good"><div class="when" data-i18n="k77">For about 24 hours</div>
+        <div class="what" data-i18n="k59">Avoid strenuous activity — heavy lifting or contact sports.</div></div>
+      <div class="item good"><div class="when" data-i18n="k78">If you need it</div>
+        <div class="what" data-i18n="k60">Slight pain, swelling or bruising at the site can be eased
+        with simple painkillers such as Panadol.</div></div>
+      <div class="item warn"><div class="when" data-i18n="k79">Seek immediate medical attention if</div>
+        <div class="what" data-i18n="k61">You have a sudden increase in pain or swelling, continued
+        bleeding, or difficulty breathing.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-i18n="k91"><span class="num">9</span> Getting your results</h2>
+    <p data-i18n="k36">The results <strong>usually take about 2 weeks to process</strong>. Your
+    primary doctor will arrange to tell you the results.</p>
+    <div class="note" data-i18n="k62"><strong>It is important to attend the follow-up appointment</strong>
+    so the results can be discussed properly with you. Waiting can feel long — that
+    is normal, and the wait itself does not mean anything has gone wrong.</div>
+  </section>
+
+  <section>
+    <h2 data-i18n="k92"><span class="num">10</span> What if you'd rather not have it?</h2>
+    <div class="sheet-note" data-i18n="k63">
+      If you are not keen for FNAC, your doctor will not be able to determine the nature of
+      the nodule and to rule out the possibility of cancer within the thyroid gland.
+      You should discuss alternative options for managing your thyroid nodule with
+      your doctor, e.g. monitoring the nodule with regular ultrasound or excision
+      biopsy of the nodule for histology. These options would be best discussed with
+      your primary (referring) doctor.
+    </div>
+    <div class="sheet-note" data-i18n="k64">
+      There is a chance that the nodule will turn out to be cancerous and you risk
+      missing the necessary treatment.
+    </div>
+  </section>
+
+  <div class="note">
+    <p data-i18n="k37"><strong>If anything here is unclear or worrying, ask your doctor.</strong>
+    Bring this page with you — it is easier to talk it through together.</p>
+  </div>
+</div>
+

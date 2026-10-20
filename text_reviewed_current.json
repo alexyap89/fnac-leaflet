@@ -1,0 +1,48 @@
+{
+ "title": "Ultrasound-guided FNAC of a thyroid nodule",
+ "steps": [
+  {
+   "t": "The neck",
+   "d": "This is a three-dimensional view of the neck. The test is called FNAC. It uses a very thin needle to take a small sample from the thyroid gland."
+  },
+  {
+   "t": "The thyroid gland",
+   "d": "The thyroid gland sits in the front of the neck, over the upper trachea."
+  },
+  {
+   "t": "The gland in position",
+   "d": "The gland rests against the trachea, with a lobe on each side, joined in the middle."
+  },
+  {
+   "t": "The nodule",
+   "d": "A nodule is a lump in the gland. It is common. Most lumps like this are not cancer, but a sample is taken to check."
+  },
+  {
+   "t": "The ultrasound probe",
+   "d": "The ultrasound probe is placed on the skin over the gland."
+  },
+  {
+   "t": "The needle",
+   "d": "A thin needle is passed through the skin into the lump. The skin is usually numbed first with an injection. This stings briefly. The needle itself is felt as a small pin prick."
+  },
+  {
+   "t": "Several passes",
+   "d": "The needle is moved gently in and out of the lump a few times. This takes only a few seconds."
+  },
+  {
+   "t": "The needle is withdrawn",
+   "d": "The needle is removed and a small dressing is put on. The whole test usually takes about 15 to 20 minutes."
+  },
+  {
+   "t": "The dressing",
+   "d": "Keep the dressing on for 1 to 2 hours, then you can take it off and wash the area. You can eat, drink and go about your day. Contact the department if you have bleeding, swelling or pain that is getting worse."
+  },
+  {
+   "t": "After the procedure",
+   "d": "You can go back to your usual activities straight away. You do not need time off work. Results take 1 to 2 weeks. The department will contact you. If you have not heard after 3 weeks, please call the department. Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated."
+  }
+ ],
+ "source": "viewer.html",
+ "source_sha256": "a7d79d7f6966a3bb",
+ "captured": "2026-10-10 12:22"
+}

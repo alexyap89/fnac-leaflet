@@ -1,0 +1,181 @@
+{
+ "source": "/home/alex/Documents/FNAC_Webapp/assets/VisceralSystem100.fbx",
+ "structures": [
+  {
+   "name": "Thyroid gland",
+   "role": "thyroid",
+   "found": true,
+   "faces": 1300,
+   "world_centre_cm": [
+    0.0,
+    -1.62,
+    147.17
+   ],
+   "world_size_cm": [
+    4.86,
+    4.16,
+    3.41
+   ]
+  },
+  {
+   "name": "Trachea",
+   "role": "airway",
+   "found": true,
+   "faces": 4516,
+   "world_centre_cm": [
+    -0.02,
+    0.18,
+    140.79
+   ],
+   "world_size_cm": [
+    2.72,
+    3.9,
+    10.54
+   ]
+  },
+  {
+   "name": "Laryngopharynx",
+   "role": "airway",
+   "found": true,
+   "faces": 1238,
+   "world_centre_cm": [
+    0.0,
+    -1.64,
+    148.34
+   ],
+   "world_size_cm": [
+    2.88,
+    3.36,
+    5.4
+   ]
+  },
+  {
+   "name": "Oropharynx",
+   "role": "airway",
+   "found": true,
+   "faces": 1272,
+   "world_centre_cm": [
+    0.0,
+    -4.2,
+    153.04
+   ],
+   "world_size_cm": [
+    6.56,
+    6.69,
+    4.42
+   ]
+  },
+  {
+   "name": "Epiglottis",
+   "role": "airway",
+   "found": true,
+   "faces": 3326,
+   "world_centre_cm": [
+    0.0,
+    -2.33,
+    149.57
+   ],
+   "world_size_cm": [
+    1.57,
+    0.77,
+    2.95
+   ]
+  },
+  {
+   "name": "Tongue",
+   "role": "soft",
+   "found": true,
+   "faces": 602,
+   "world_centre_cm": [
+    0.0,
+    -5.01,
+    151.83
+   ],
+   "world_size_cm": [
+    3.37,
+    5.63,
+    4.26
+   ]
+  },
+  {
+   "name": "Inferior parathyroid gland.r",
+   "role": "parathyroid",
+   "found": true,
+   "faces": 64,
+   "world_centre_cm": [
+    -1.09,
+    0.13,
+    146.03
+   ],
+   "world_size_cm": [
+    0.17,
+    0.38,
+    0.3
+   ]
+  },
+  {
+   "name": "Inferior parathyroid gland.l",
+   "role": "parathyroid",
+   "found": true,
+   "faces": 64,
+   "world_centre_cm": [
+    1.09,
+    0.13,
+    146.03
+   ],
+   "world_size_cm": [
+    0.17,
+    0.38,
+    0.3
+   ]
+  },
+  {
+   "name": "Superior parathyroid gland.r",
+   "role": "parathyroid",
+   "found": true,
+   "faces": 64,
+   "world_centre_cm": [
+    -1.64,
+    0.32,
+    148.01
+   ],
+   "world_size_cm": [
+    0.39,
+    0.25,
+    0.31
+   ]
+  },
+  {
+   "name": "Superior parathyroid gland.l",
+   "role": "parathyroid",
+   "found": true,
+   "faces": 64,
+   "world_centre_cm": [
+    1.64,
+    0.32,
+    148.01
+   ],
+   "world_size_cm": [
+    0.39,
+    0.25,
+    0.31
+   ]
+  }
+ ],
+ "glb": "/home/alex/Documents/FNAC_Webapp/model/neck_anatomy_z.glb",
+ "glb_bytes": 333440,
+ "faces": 12510,
+ "nodes": [
+  "thyroid__Thyroid_gland",
+  "airway__Trachea",
+  "airway__Laryngopharynx",
+  "airway__Oropharynx",
+  "airway__Epiglottis",
+  "soft__Tongue",
+  "parathyroid__Inferior_parathyroid_gland.r",
+  "parathyroid__Inferior_parathyroid_gland.l",
+  "parathyroid__Superior_parathyroid_gland.r",
+  "parathyroid__Superior_parathyroid_gland.l"
+ ],
+ "verify_pass": true
+}

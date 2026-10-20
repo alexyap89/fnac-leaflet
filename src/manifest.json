@@ -1,0 +1,52 @@
+{
+ "note": "line ranges into the original index.html; see tools/split.py",
+ "spans": {
+  "head_top": [
+   1,
+   6
+  ],
+  "css": [
+   8,
+   177
+  ],
+  "head_body": [
+   179,
+   447
+  ],
+  "lib": [
+   450,
+   456
+  ],
+  "glb": [
+   457,
+   550
+  ],
+  "scene": [
+   551,
+   705
+  ],
+  "app": [
+   706,
+   991
+  ],
+  "tail": [
+   992,
+   994
+  ]
+ },
+ "files": {
+  "head_top": "head_top.html",
+  "css": "style.css",
+  "head_body": "head_body.html",
+  "lib": "lib/three.min.js",
+  "glb": "app_glb.js",
+  "scene": "app_scene.js",
+  "app": "app_app.js",
+  "tail": "tail.html"
+ },
+ "model": "model/fnac_scene_v12.glb",
+ "audio_glob": "audio/en/leaflet/step*.mp3",
+ "source_index_sha256": "c73a70ffac9cbc1d34c22205c432098a4adf8b6511ed092ee19ce7701448bc19",
+ "source_index_bytes": 2319072,
+ "i18n_dir": "src/i18n"
+}

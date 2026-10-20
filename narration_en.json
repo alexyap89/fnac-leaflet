@@ -1,0 +1,102 @@
+{
+ "language": "en",
+ "voice": "en",
+ "steps": [
+  {
+   "index": 1,
+   "title": "The neck",
+   "text": "This is a three-dimensional view of the neck. The test is called FNAC. It uses a very thin needle to take a small sample from the thyroid gland.",
+   "spoken": "Step 1. The neck. [[slnc 700]] This is a three-dimensional view of the neck. The test is called FNAC. It uses a very thin needle to take a small sample from the thyroid gland.",
+   "out": "audio/en/step_01.wav"
+  },
+  {
+   "index": 2,
+   "title": "The thyroid gland",
+   "text": "The thyroid gland sits in the front of the neck, over the upper trachea.",
+   "spoken": "Step 2. The thyroid gland. [[slnc 700]] The thyroid gland sits in the front of the neck, over the upper trachea.",
+   "out": "audio/en/step_02.wav"
+  },
+  {
+   "index": 3,
+   "title": "The gland in position",
+   "text": "The gland rests against the trachea, with a lobe on each side, joined in the middle.",
+   "spoken": "Step 3. The gland in position. [[slnc 700]] The gland rests against the trachea, with a lobe on each side, joined in the middle.",
+   "out": "audio/en/step_03.wav"
+  },
+  {
+   "index": 4,
+   "title": "The nodule",
+   "text": "A nodule is a lump in the gland. It is common. Most lumps like this are not cancer, but a sample is taken to check.",
+   "spoken": "Step 4. The nodule. [[slnc 700]] A nodule is a lump in the gland. It is common. Most lumps like this are not cancer, but a sample is taken to check.",
+   "out": "audio/en/step_04.wav"
+  },
+  {
+   "index": 5,
+   "title": "The ultrasound probe",
+   "text": "The ultrasound probe is placed on the skin over the gland.",
+   "spoken": "Step 5. The ultrasound probe. [[slnc 700]] The ultrasound probe is placed on the skin over the gland.",
+   "out": "audio/en/step_05.wav"
+  },
+  {
+   "index": 6,
+   "title": "The needle",
+   "text": "A thin needle is passed through the skin into the lump. The skin is usually numbed first with an injection. This stings briefly. The needle itself is felt as a small pin prick.",
+   "spoken": "Step 6. The needle. [[slnc 700]] A thin needle is passed through the skin into the lump. The skin is usually numbed first with an injection. This stings briefly. The needle itself is felt as a small pin prick.",
+   "out": "audio/en/step_06.wav"
+  },
+  {
+   "index": 7,
+   "title": "Several passes",
+   "text": "The needle is moved gently in and out of the lump a few times. This takes only a few seconds.",
+   "spoken": "Step 7. Several passes. [[slnc 700]] The needle is moved gently in and out of the lump a few times. This takes only a few seconds.",
+   "out": "audio/en/step_07.wav"
+  },
+  {
+   "index": 8,
+   "title": "The needle is withdrawn",
+   "text": "The needle is removed and a small dressing is put on. The whole test usually takes about 15 to 20 minutes. You can go home on your own and drive yourself.",
+   "spoken": "Step 8. The needle is withdrawn. [[slnc 700]] The needle is removed and a small dressing is put on. The whole test usually takes about 15 to 20 minutes. You can go home on your own and drive yourself.",
+   "out": "audio/en/step_08.wav"
+  },
+  {
+   "index": 9,
+   "title": "The dressing",
+   "text": "Keep the dressing on for 1 to 2 hours, then you can take it off and wash the area. Most people feel fine straight away. Mild tenderness for a day or two is normal. Get help the same day if the neck swells quickly, if bleeding does not stop with pressure, or if you have trouble breathing or swallowing.",
+   "spoken": "Step 9. The dressing. [[slnc 700]] Keep the dressing on for 1 to 2 hours, then you can take it off and wash the area. Most people feel fine straight away. Mild tenderness for a day or two is normal. Get help the same day if the neck swells quickly, if bleeding does not stop with pressure, or if you have trouble breathing or swallowing.",
+   "out": "audio/en/step_09.wav"
+  },
+  {
+   "index": 10,
+   "title": "After the procedure",
+   "text": "You can go back to your usual activities straight away. You do not need time off work. Avoid heavy lifting or hard exercise for the rest of the day; desk work is fine. Results take 1 to 2 weeks and are given to you by the department, usually by phone or at a follow-up appointment. If you have not heard after 3 weeks, call the department. Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated. This is common and does not mean the result is bad.",
+   "spoken": "Step 10. After the procedure. [[slnc 700]] You can go back to your usual activities straight away. You do not need time off work. Avoid heavy lifting or hard exercise for the rest of the day; desk work is fine. Results take 1 to 2 weeks and are given to you by the department, usually by phone or at a follow-up appointment. If you have not heard after 3 weeks, call the department. Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated. This is common and does not mean the result is bad.",
+   "out": "audio/en/step_10.wav"
+  }
+ ],
+ "glossary": [
+  {
+   "term": "FNAC",
+   "def": "Fine Needle Aspiration Cytology. The test. A very thin needle takes a few cells from the gland to look at."
+  },
+  {
+   "term": "Nodule",
+   "def": "A lump in the gland. It is a finding, not a diagnosis."
+  },
+  {
+   "term": "Thyroid",
+   "def": "The gland in the front of the neck that controls how the body uses energy."
+  },
+  {
+   "term": "Numbing injection",
+   "def": "A small injection in the skin to make the area less sensitive before the needle."
+  },
+  {
+   "term": "Passes",
+   "def": "Gentle in-and-out movements of the needle to collect enough cells. They last a few seconds."
+  },
+  {
+   "term": "Repeated test",
+   "def": "If the sample is not clear enough to give an answer, the test may need to be done again."
+  }
+ ]
+}

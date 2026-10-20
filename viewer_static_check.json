@@ -1,0 +1,16 @@
+{
+ "steps": 9,
+ "issues": [],
+ "glb_nodes": [
+  "airway__Epiglottis",
+  "airway__Trachea",
+  "parathyroid__Inferior_parathyroid_gland.l",
+  "parathyroid__Inferior_parathyroid_gland.r",
+  "parathyroid__Superior_parathyroid_gland.l",
+  "parathyroid__Superior_parathyroid_gland.r",
+  "thyroid__Thyroid_gland",
+  "soft__Tongue",
+  "airway__Laryngopharynx",
+  "airway__Oropharynx"
+ ]
+}

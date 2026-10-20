@@ -1,0 +1,150 @@
+{
+ "findings": {
+  "step00": {
+   "framing": 6,
+   "centred": 5,
+   "frontal": 4,
+   "legible": 5,
+   "clarity": 6,
+   "overall": 5,
+   "worst_problem": "The viewport shows a cluttered real-world photo with the needle site off-centre and the doctor's head cropped, rather than a clean centred 3D model.",
+   "frame_percent": 70
+  },
+  "step01": {
+   "framing": 7,
+   "centred": 8,
+   "frontal": 8,
+   "legible": 6,
+   "clarity": 5,
+   "overall": 6,
+   "worst_problem": "The 3D neck model reads as an abstract cape or bat-wing membrane rather than a recognizable neck, hurting clarity.",
+   "frame_percent": 45
+  },
+  "step02": {
+   "framing": 8,
+   "centred": 9,
+   "frontal": 9,
+   "legible": 8,
+   "clarity": 7,
+   "overall": 8,
+   "worst_problem": "The thyroid gland is hidden behind the opaque skin surface, so the key structure for this step is not visible.",
+   "frame_percent": 55
+  },
+  "step03": {
+   "framing": 3,
+   "centred": 5,
+   "frontal": 2,
+   "legible": 1,
+   "clarity": 1,
+   "overall": 2,
+   "worst_problem": "The 3D model is severely out of focus and blurry, so no anatomical structure is recognisable.",
+   "frame_percent": 80
+  },
+  "step04": {
+   "framing": 7,
+   "centred": 5,
+   "frontal": 6,
+   "legible": 7,
+   "clarity": 8,
+   "overall": 6,
+   "worst_problem": "The thyroid model is shifted left of centre, crowding the right edge with the right lobe while leaving unbalanced empty space on the left.",
+   "frame_percent": 65
+  },
+  "step05": {
+   "framing": 7,
+   "centred": 6,
+   "frontal": 4,
+   "legible": 5,
+   "clarity": 6,
+   "overall": 6,
+   "worst_problem": "Over-transparent soft tissue and airway make the anatomy muddy and hard to read, while the large dark probe crowds the left side.",
+   "frame_percent": 75
+  },
+  "step06": {
+   "framing": 6,
+   "centred": 6,
+   "frontal": 5,
+   "legible": 7,
+   "clarity": 6,
+   "overall": 6,
+   "worst_problem": "The composition is off-balance with a confusing detached probe fragment floating at lower-left and excess empty space on the right.",
+   "frame_percent": 55
+  },
+  "step07": {
+   "framing": 6,
+   "centred": 6,
+   "frontal": 5,
+   "legible": 6,
+   "clarity": 7,
+   "overall": 6,
+   "worst_problem": "The model sits off-centre with large empty space on the left and an oblique angle that weakens frontality.",
+   "frame_percent": 60
+  },
+  "step08": {
+   "framing": 6,
+   "centred": 9,
+   "frontal": 9,
+   "legible": 8,
+   "clarity": 8,
+   "overall": 7,
+   "worst_problem": "The anatomical model is too small within the viewport, leaving excessive empty space and weak framing.",
+   "frame_percent": 35
+  },
+  "step09": {
+   "framing": 4,
+   "centred": 4,
+   "frontal": 6,
+   "legible": 6,
+   "clarity": 6,
+   "overall": 5,
+   "worst_problem": "The 3D model is cropped at the top and bottom and shifted left, so the full thyroid is not contained in the frame.",
+   "frame_percent": 80
+  },
+  "step10": {
+   "framing": 2,
+   "centred": 8,
+   "frontal": 7,
+   "legible": 2,
+   "clarity": 3,
+   "overall": 3,
+   "worst_problem": "The anatomical model is far too small in the viewport, leaving excessive empty space and making it hard to interpret.",
+   "frame_percent": 5
+  }
+ },
+ "x13": {
+  "confirmed": [
+   "step00",
+   "step01",
+   "step02",
+   "step03",
+   "step04",
+   "step05",
+   "step06",
+   "step07",
+   "step08",
+   "step09",
+   "step10"
+  ],
+  "likely_hallucinated": [],
+  "top_priority": "step03: The 3D model is severely out of focus and blurry, so no anatomical structure is recognisable.",
+  "pattern": "The visual quality and composition suffer from inconsistent scaling, poor centering, and significant clarity issues across the sequence."
+ },
+ "ornith": {
+  "confirmed": [
+   "step00",
+   "step01",
+   "step02",
+   "step03",
+   "step04",
+   "step05",
+   "step06",
+   "step07",
+   "step08",
+   "step09",
+   "step10"
+  ],
+  "likely_hallucinated": [],
+  "top_priority": "step03: severe out-of-focus blur makes the anatomy completely unrecognizable",
+  "pattern": "The app mixes a real-world photo, abstract non-anatomical models, and opaque skin that hides the thyroid, so most frames fail to clearly show the key structure for their step."
+ }
+}

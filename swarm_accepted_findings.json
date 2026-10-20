@@ -1,0 +1,22 @@
+{
+ "no_department_phone_number": {
+  "decision": "Leave as 'call the department'. The leaflet is handed out in person, so the contact route is conveyed verbally.",
+  "raised_by": [
+   "P1_low_literacy_elderly",
+   "P2_working_adult",
+   "P3_graduate_anxious",
+   "P4_caregiver"
+  ],
+  "status": "ACCEPTED - not a defect",
+  "date": "2026-10-03"
+ },
+ "no_malignancy_percentage": {
+  "decision": "Keep 'Most lumps like this are not cancer' as the agreed wording. No published figure is to be added.",
+  "raised_by": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ],
+  "status": "ACCEPTED - not a defect",
+  "date": "2026-10-03"
+ }
+}

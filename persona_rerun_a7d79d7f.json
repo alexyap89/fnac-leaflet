@@ -1,0 +1,162 @@
+{
+ "steps_reviewed": 10,
+ "personas_run": 4,
+ "errors": [],
+ "raw": 18,
+ "kept": 18,
+ "dropped_unsupported": 0,
+ "by_type": {
+  "unclear": 5,
+  "worry": 8,
+  "missing": 5,
+  "good": 0
+ },
+ "consensus": {
+  "section 1": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ],
+  "section 4": [
+   "P1_low_literacy_elderly",
+   "P3_graduate_anxious"
+  ],
+  "section 10": [
+   "P1_low_literacy_elderly",
+   "P2_working_adult",
+   "P3_graduate_anxious"
+  ],
+  "section 9": [
+   "P1_low_literacy_elderly",
+   "P2_working_adult"
+  ]
+ },
+ "findings": [
+  {
+   "type": "unclear",
+   "where": "Section 1",
+   "quote": "The test is called FNAC.",
+   "why": "I don't know this word FNAC. Nobody tell me what it mean, I just read letters.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "unclear",
+   "where": "Section 3",
+   "quote": "with a lobe on each side",
+   "why": "What is lobe? I never hear this word. I don't understand my own neck.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "worry",
+   "where": "Section 6",
+   "quote": "The skin is usually numbed first with an injection.",
+   "why": "I very scared of needle. This say injection go in skin, my hand shake just read.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "worry",
+   "where": "Section 4",
+   "quote": "Most lumps like this are not cancer",
+   "why": "I see the word cancer only. My heart beat fast. Why they put scary word for old man like me?",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "worry",
+   "where": "Section 10",
+   "quote": "the test needs to be repeated.",
+   "why": "What if my sample not clear? Must I come again with needle? I so worried just thinking.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "missing",
+   "where": "Section 9",
+   "quote": "You can eat, drink and go about your day.",
+   "why": "After needle in my neck, can I drive myself home alone? Nobody say this. I have no family here.",
+   "persona": "P1_low_literacy_elderly"
+  },
+  {
+   "type": "worry",
+   "where": "section 10",
+   "quote": "Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated.",
+   "why": "I want to know what happens next and if it means I have to take another day off work.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "worry",
+   "where": "section 9",
+   "quote": "Contact the department if you have bleeding, swelling or pain that is getting worse.",
+   "why": "It does not say how bad is too bad, so I am not sure what to watch for while at work.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "missing",
+   "where": "section 8",
+   "quote": "The needle is removed and a small dressing is put on.",
+   "why": "Nothing says whether I can drive myself home after the test.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "unclear",
+   "where": "section 10",
+   "quote": "Results take 1 to 2 weeks.",
+   "why": "I would like to know if results come sooner when there is a problem.",
+   "persona": "P2_working_adult"
+  },
+  {
+   "type": "unclear",
+   "where": "Section 1",
+   "quote": "The test is called FNAC.",
+   "why": "I don't know what those letters stand for, so I can't understand or research what is actually being done to me.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "missing",
+   "where": "Section 4",
+   "quote": "Most lumps like this are not cancer",
+   "why": "'Most' isn't a number; I want the actual percentage of these lumps that turn out benign versus cancer before I can take it in.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "worry",
+   "where": "Section 10",
+   "quote": "Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated.",
+   "why": "It never says how often this happens or what a repeat means, so I worry I could get stuck doing more than one needle test without being told.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "unclear",
+   "where": "Section 10",
+   "quote": "If you have not heard after 3 weeks, please call the department.",
+   "why": "Results are said to take only 1 to 2 weeks, so I don't understand why I must sit in silence for a full 3 weeks before I'm allowed to call and ask what's going on.",
+   "persona": "P3_graduate_anxious"
+  },
+  {
+   "type": "missing",
+   "where": "The dressing",
+   "quote": "Contact the department if you have bleeding, swelling or pain that is getting worse.",
+   "why": "No phone number is written down, so I do not know who to ring if this happens.",
+   "persona": "P4_caregiver"
+  },
+  {
+   "type": "missing",
+   "where": "After the procedure",
+   "quote": "If you have not heard after 3 weeks, please call the department.",
+   "why": "There is no department phone number given anywhere for me to call.",
+   "persona": "P4_caregiver"
+  },
+  {
+   "type": "worry",
+   "where": "After the procedure",
+   "quote": "Sometimes the sample is not clear enough to give an answer, and the test needs to be repeated.",
+   "why": "This worries me that it may not find out the answer the first time.",
+   "persona": "P4_caregiver"
+  },
+  {
+   "type": "worry",
+   "where": "After the procedure",
+   "quote": "Results take 1 to 2 weeks.",
+   "why": "Waiting up to two weeks without knowing whether it is cancer is frightening.",
+   "persona": "P4_caregiver"
+  }
+ ],
+ "source_sha256": "a7d79d7f6966a3bb"
+}

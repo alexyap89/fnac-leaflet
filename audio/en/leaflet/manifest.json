@@ -1,0 +1,112 @@
+{
+ "engine": "omnivoice",
+ "voice": "OmniVoice k2-fsa/OmniVoice, one cloned reference voice for every step",
+ "files": [
+  "audio/en/leaflet/step01.mp3",
+  "audio/en/leaflet/step02.mp3",
+  "audio/en/leaflet/step03.mp3",
+  "audio/en/leaflet/step04.mp3",
+  "audio/en/leaflet/step05.mp3",
+  "audio/en/leaflet/step06.mp3",
+  "audio/en/leaflet/step07.mp3",
+  "audio/en/leaflet/step08.mp3",
+  "audio/en/leaflet/step09.mp3"
+ ],
+ "steps": {
+  "step01": {
+   "step": 1,
+   "title": "Your neck and your thyroid",
+   "characters": 216,
+   "words": 42,
+   "duration_s": 13.1,
+   "bytes": 78884,
+   "wpm": 192.4,
+   "engine": "omnivoice"
+  },
+  "step02": {
+   "step": 2,
+   "title": "Finding the lump",
+   "characters": 186,
+   "words": 37,
+   "duration_s": 11.34,
+   "bytes": 68300,
+   "wpm": 195.8,
+   "engine": "omnivoice"
+  },
+  "step03": {
+   "step": 3,
+   "title": "Preparing the skin",
+   "characters": 162,
+   "words": 32,
+   "duration_s": 9.47,
+   "bytes": 57068,
+   "wpm": 202.7,
+   "engine": "omnivoice"
+  },
+  "step04": {
+   "step": 4,
+   "title": "Holding the ultrasound probe",
+   "characters": 205,
+   "words": 37,
+   "duration_s": 12.6,
+   "bytes": 75860,
+   "wpm": 176.2,
+   "engine": "omnivoice"
+  },
+  "step05": {
+   "step": 5,
+   "title": "Lining up the needle",
+   "characters": 157,
+   "words": 31,
+   "duration_s": 9.4,
+   "bytes": 56636,
+   "wpm": 197.9,
+   "engine": "omnivoice"
+  },
+  "step06": {
+   "step": 6,
+   "title": "The needle goes in",
+   "characters": 228,
+   "words": 44,
+   "duration_s": 13.9,
+   "bytes": 83636,
+   "wpm": 189.9,
+   "engine": "omnivoice"
+  },
+  "step07": {
+   "step": 7,
+   "title": "Collecting the cells",
+   "characters": 240,
+   "words": 43,
+   "duration_s": 14.83,
+   "bytes": 89252,
+   "wpm": 174.0,
+   "engine": "omnivoice"
+  },
+  "step08": {
+   "step": 8,
+   "title": "The needle comes out",
+   "characters": 181,
+   "words": 33,
+   "duration_s": 10.98,
+   "bytes": 66140,
+   "wpm": 180.3,
+   "engine": "omnivoice"
+  },
+  "step09": {
+   "step": 9,
+   "title": "Afterwards, and your results",
+   "characters": 308,
+   "words": 55,
+   "duration_s": 18.86,
+   "bytes": 113444,
+   "wpm": 175.0,
+   "engine": "omnivoice"
+  }
+ },
+ "total": {
+  "duration_s": 114.48,
+  "bytes": 689220,
+  "steps": 9
+ }
+}

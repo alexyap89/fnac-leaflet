@@ -1,0 +1,32 @@
+{
+ "glb": "/home/alex/Documents/FNAC_Webapp/model/head_shell.glb",
+ "faces": 13124,
+ "verts": 7097,
+ "shell_bbox_cm": {
+  "lo": [
+   -15.5,
+   -11.85,
+   129.82
+  ],
+  "hi": [
+   15.5,
+   11.1,
+   175.0
+  ]
+ },
+ "landmarks_cm": {
+  "airway_top": 151.04,
+  "tongue_top": 153.96,
+  "gland_top": 148.88,
+  "gland_bot": 145.47,
+  "neck_base": 135.52,
+  "chin_z": 160.1,
+  "head_centre_z": 163.8
+ },
+ "thyroid_inside_shell": {
+  "x": true,
+  "y": true,
+  "z": true
+ },
+ "verify_pass": true
+}

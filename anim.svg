@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 620"
+     width="1000" height="620" role="img"
+     aria-labelledby="animTitle animDesc">
+  <title id="animTitle">Ultrasound-guided fine needle aspiration of a thyroid nodule</title>
+  <desc id="animDesc">An animated, side-view illustration of the neck during a
+  thyroid fine needle aspiration. The skin is shown as a cutaway so the thyroid
+  gland and the nodule inside it are visible. A step-by-step written
+  description of every stage appears below this animation.</desc>
+
+  <defs>
+    <linearGradient id="gSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2cfb4"/>
+      <stop offset="1" stop-color="#e0b295"/>
+    </linearGradient>
+    <linearGradient id="gProbe" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4f7fa"/>
+      <stop offset="1" stop-color="#c3ced8"/>
+    </linearGradient>
+    <radialGradient id="gNodule" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#8a3d45"/>
+      <stop offset="1" stop-color="#6d2f36"/>
+    </radialGradient>
+    <clipPath id="clipCut">
+      <path d="M 120 300 L 640 300 L 640 560 L 120 560 Z"/>
+    </clipPath>
+    <style>
+      .ln   { fill:none; stroke:#2b2b2b; stroke-width:2.4;
+               stroke-linejoin:round; stroke-linecap:round; }
+      .ln-thin { fill:none; stroke:#2b2b2b; stroke-width:1.6;
+               stroke-linejoin:round; stroke-linecap:round; }
+      .lbl  { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+               font-size:19px; fill:#1b1b1b; }
+      .lead { fill:none; stroke:#1b1b1b; stroke-width:1.4; }
+      .dot  { fill:#1b1b1b; }
+      /* step visibility: each step group is hidden until its step is active */
+      .step { opacity:0; }
+      @media (prefers-reduced-motion: reduce) {
+        .leave { display:block !important; opacity:1 !important; }
+        .enter { display:none !important; }
+      }
+    </style>
+  </defs>
+
+  <!-- ===================== background ===================== -->
+  <rect width="1000" height="620" fill="#cfe0ea"/>
+
+  <!-- ===================== head and neck (profile, facing left) ============ -->
+  <g id="patient">
+    <!-- hair mass at the back of the head -->
+    <path class="ln" fill="#3a3532" d="
+      M 600 250
+      C 596 170, 548 116, 470 112
+      C 392 108, 330 150, 312 206
+      C 300 244, 316 268, 344 276
+      L 352 214
+      C 366 176, 414 150, 466 154
+      C 512 158, 544 190, 552 232
+      Z"/>
+    <!-- face and jaw -->
+    <path class="ln" fill="url(#gSkin)" d="
+      M 344 276
+      C 316 268, 300 244, 312 206
+      C 330 150, 392 108, 470 112
+      C 548 116, 596 170, 600 250
+      L 612 380
+      C 616 440, 600 500, 560 536
+      L 520 556
+      C 470 572, 402 566, 356 536
+      L 330 512
+      C 300 480, 292 430, 300 392
+      Z"/>
+    <!-- closed eye -->
+    <path class="ln-thin" d="M 398 214 C 414 224, 436 224, 452 212"/>
+    <!-- eyebrow -->
+    <path class="ln-thin" d="M 396 190 C 416 178, 442 178, 460 188"/>
+    <!-- nose -->
+    <path class="ln" fill="#f2cfb4" d="
+      M 318 250 C 300 262, 288 276, 290 288
+      C 292 298, 306 302, 320 300 L 336 292 Z"/>
+    <!-- mouth -->
+    <path class="ln-thin" d="M 320 330 C 340 338, 364 336, 380 328"/>
+    <!-- ear -->
+    <path class="ln" fill="#e0b295" d="
+      M 560 232 C 588 226, 606 244, 602 272
+      C 598 300, 578 312, 560 306 Z"/>
+    <!-- neck shadow under the jaw -->
+    <path class="ln-thin" fill="#e0b295" opacity="0.55" d="
+      M 356 400 C 400 430, 470 440, 520 424 L 520 470
+      C 462 486, 394 470, 356 436 Z"/>
+  </g>
+
+  <!-- ===================== cutaway: thyroid visible in situ ============== -->
+  <g id="cutaway" clip-path="url(#clipCut)">
+    <!-- the transparent wedge of skin over the anterior neck -->
+    <path class="ln" fill="#e8c3a6" opacity="0.42" d="
+      M 300 392
+      C 296 448, 318 512, 362 552
+      L 470 596
+      C 560 616, 630 592, 660 540
+      L 660 372
+      C 560 386, 420 380, 300 392 Z"/>
+
+    <!-- thyroid gland: two lobes + isthmus -->
+    <g id="thyroid">
+      <!-- right lobe (nearer) -->
+      <path class="ln" fill="#b96a63" d="
+        M 322 424
+        C 312 452, 314 500, 330 528
+        C 344 552, 372 556, 388 536
+        C 404 514, 404 460, 392 430
+        C 380 404, 340 402, 322 424 Z"/>
+      <!-- left lobe (further, behind) -->
+      <path class="ln" fill="#a05750" opacity="0.9" d="
+        M 398 418
+        C 388 444, 390 490, 406 516
+        C 420 538, 448 540, 460 520
+        C 474 498, 474 452, 462 424
+        C 450 400, 410 398, 398 418 Z"/>
+      <!-- isthmus between them -->
+      <path class="ln" fill="#a05750" d="
+        M 386 470 C 394 462, 412 462, 420 470
+        C 426 482, 424 500, 416 508
+        C 404 514, 390 512, 384 502
+        C 378 492, 380 478, 386 470 Z"/>
+    </g>
+
+    <!-- nodule: inside the right lobe -->
+    <circle id="nodule-centre" data-x="352" data-y="452" cx="352" cy="452" r="21"
+            fill="url(#gNodule)" stroke="#2b2b2b" stroke-width="2"/>
+    <circle cx="352" cy="452" r="27" fill="none"
+            stroke="#e08a95" stroke-width="2" opacity="0.75"
+            stroke-dasharray="5 4"/>
+  </g>
+
+  <!-- ===================== needle + syringe ===================== -->
+  <!-- anchors read by swarm_cycle.py: the trajectory must satisfy
+       skin-entry (lateral) -> under probe-face -> nodule-centre -->
+  <g id="skin-entry" data-x="286" data-y="392"></g>
+  <g id="needle-tip" data-x="352" data-y="452">
+    <g id="needleGroup">
+      <!-- syringe barrel -->
+      <rect x="196" y="250" width="58" height="26" rx="7"
+            fill="#eef4f8" stroke="#2b2b2b" stroke-width="2.2"
+            transform="rotate(38 225 263)"/>
+      <!-- fluid in the syringe -->
+      <rect x="206" y="256" width="34" height="14" rx="4"
+            fill="#c0392b" opacity="0.75"
+            transform="rotate(38 225 263)"/>
+      <!-- hub -->
+      <rect x="240" y="268" width="26" height="16" rx="4"
+            fill="#4aa3d6" stroke="#2b2b2b" stroke-width="2"
+            transform="rotate(38 253 276)"/>
+      <!-- needle shaft: runs from the hub down to the nodule centre -->
+      <line x1="272" y1="292" x2="352" y2="452"
+            stroke="#c9ced4" stroke-width="4" stroke-linecap="round"/>
+      <line x1="272" y1="292" x2="352" y2="452"
+            stroke="#2b2b2b" stroke-width="1.2" stroke-linecap="round"
+            opacity="0.55"/>
+      <!-- bevel tip -->
+      <circle cx="352" cy="452" r="4.5" fill="#c9ced4"
+              stroke="#2b2b2b" stroke-width="1.4"/>
+    </g>
+  </g>
+
+  <!-- ===================== ultrasound probe ===================== -->
+  <g id="probe">
+    <g id="probe-face" data-x="372" data-y="384">
+      <!-- footprint on the skin -->
+      <rect x="332" y="374" width="80" height="20" rx="8"
+            fill="#9fd4ea" stroke="#2b2b2b" stroke-width="2"/>
+      <!-- body -->
+      <path class="ln" fill="url(#gProbe)" d="
+        M 338 374 L 406 374 L 420 330 L 324 330 Z"/>
+      <!-- grip -->
+      <path class="ln" fill="#f4f7fa" d="
+        M 344 330 L 400 330 L 392 268 C 390 258, 354 258, 352 268 Z"/>
+      <!-- cable -->
+      <path class="ln" stroke="#2b2b2b" fill="none" d="
+        M 372 268 C 374 226, 408 214, 452 214"/>
+    </g>
+  </g>
+
+  <!-- ===================== ultrasound wave arcs ===================== -->
+  <g id="waves" opacity="0.9">
+    <path class="ln-thin" stroke="#3fa9dc" stroke-width="3" fill="none" d="
+      M 356 402 C 340 424, 332 446, 336 470"/>
+    <path class="ln-thin" stroke="#3fa9dc" stroke-width="3" fill="none"
+          opacity="0.72" d="
+      M 372 406 C 358 432, 352 458, 358 486"/>
+    <path class="ln-thin" stroke="#3fa9dc" stroke-width="3" fill="none"
+          opacity="0.45" d="
+      M 390 404 C 378 430, 374 454, 380 482"/>
+  </g>
+
+  <!-- ===================== dressing (appears at the end) ================= -->
+  <g id="dressing" opacity="0">
+    <rect x="272" y="376" width="46" height="14" rx="5"
+          fill="#f7f4ee" stroke="#2b2b2b" stroke-width="2"
+          transform="rotate(38 295 383)"/>
+    <path class="ln-thin" d="M 272 396 L 318 406" opacity="0.5"/>
+  </g>
+
+  <!-- ===================== labels ===================== -->
+  <g id="labels">
+    <line class="lead" x1="418" y1="268" x2="470" y2="204"/>
+    <circle class="dot" cx="418" cy="268" r="3"/>
+    <text class="lbl" x="476" y="200">Ultrasound probe</text>
+
+    <line class="lead" x1="252" y1="300" x2="196" y2="266"/>
+    <circle class="dot" cx="252" cy="300" r="3"/>
+    <text class="lbl" x="86" y="262">Needle</text>
+
+    <line class="lead" x1="368" y1="440" x2="470" y2="416"/>
+    <circle class="dot" cx="368" cy="440" r="3"/>
+    <text class="lbl" x="476" y="412">Nodule</text>
+
+    <line class="lead" x1="442" y1="520" x2="520" y2="548"/>
+    <circle class="dot" cx="442" cy="520" r="3"/>
+    <text class="lbl" x="526" y="552">Thyroid</text>
+  </g>
+
+  <!-- ===================== animation ===================== -->
+  <!-- Each group fades in at its step and out at the next, on a 50s loop.
+       Times are computed, not hand-typed, so they stay in sync with STEPS. -->
+  <g id="animThyroid">
+    <animate attributeName="opacity" values="0.0;0.0;1.0;1.0;0.0;0.0" keyTimes="0;0.1111;0.1231;0.8769;0.8889;1" dur="50s" repeatCount="indefinite"/>
+  </g>
+  <g id="animNodule">
+    <animate attributeName="opacity" values="0.0;0.0;1.0;1.0;0.0;0.0" keyTimes="0;0.2222;0.2342;0.8769;0.8889;1" dur="50s" repeatCount="indefinite"/>
+  </g>
+  <g id="animProbe">
+    <animate attributeName="opacity" values="0.0;0.0;1.0;1.0;0.0;0.0" keyTimes="0;0.4444;0.4564;0.7658;0.7778;1" dur="50s" repeatCount="indefinite"/>
+  </g>
+  <g id="animWaves">
+    <animate attributeName="opacity" values="0.0;0.0;1.0;1.0;0.0;0.0" keyTimes="0;0.4444;0.4564;0.6547;0.6667;1" dur="50s" repeatCount="indefinite"/>
+  </g>
+  <g id="animNeedle">
+    <animate attributeName="opacity" values="0.0;0.0;1.0;1.0;0.0;0.0" keyTimes="0;0.5556;0.5676;0.7658;0.7778;1" dur="50s" repeatCount="indefinite"/>
+  </g>
+  <g id="animDressing">
+    <animate attributeName="opacity" values="0.0;0.0;1.0;1.0;0.0;0.0" keyTimes="0;0.8889;0.9009;0.9880;1.0000;1" dur="50s" repeatCount="indefinite"/>
+  </g>
+
+  <animateTransform href="#needleGroup" attributeName="transform"
+     type="translate" values="0 0; 0 0; -14 -18; 0 0; -14 -18; 0 0; -14 -18; 0 0"
+     keyTimes="0;0.60;0.645;0.69;0.735;0.78;0.825;0.87"
+     dur="50s" repeatCount="indefinite"/>
+</svg>
