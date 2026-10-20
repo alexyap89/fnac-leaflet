@@ -129,26 +129,29 @@ html[data-contrast="high"] .sheet-note{background:#141414;border-left-color:#ffc
    while dragging, which otherwise interrupts a rotate mid-gesture. */
 #gl{display:block;width:100%;height:100%;touch-action:none;
   -webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-.stage .badge{position:absolute;top:14px;left:16px;background:rgba(6,12,24,.85);
-  border:1px solid var(--line);border-radius:999px;padding:6px 14px;
-  font-size:calc(var(--fs)*.7);color:var(--ink2);pointer-events:none;box-shadow:var(--shadow-s)}
-.stage .legend{position:absolute;top:14px;right:16px;background:rgba(6,12,24,.9);
-  border:1px solid var(--line);border-radius:12px;padding:10px 13px;
-  font-size:calc(var(--fs)*.68);color:var(--ink2);pointer-events:none;max-width:190px;
-  z-index:4;box-shadow:var(--shadow-m)}
-.stage .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;
-  margin-right:7px;vertical-align:middle}
+/* The stage now holds ONLY the canvas and the anatomy callouts. */
 .stage .scene-labels{position:absolute;inset:0;pointer-events:none;z-index:3}
 .scene-label{position:absolute;left:0;top:0;background:rgba(6,12,24,.88);
   border:1px solid rgba(120,170,255,.45);border-radius:8px;padding:3px 9px;
   font-size:calc(var(--fs)*.66);color:#d6e6ff;white-space:nowrap}
 .scene-label--sm{font-size:calc(var(--fs)*.5);padding:2px 6px;border-radius:6px}
-.stage .hud{position:absolute;left:16px;bottom:16px;right:16px;display:flex;
-  gap:10px;align-items:center;flex-wrap:wrap;z-index:5}
-.stage .step-label{min-height:44px;background:rgba(10,15,23,.72);border:1px solid var(--line);
-  border-top:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:calc(var(--fs)*.82);
-  flex:1 1 240px;box-shadow:var(--shadow-s);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.stage .step-label b{color:var(--accent2)}
+
+/* The chrome sits BELOW the canvas. It used to be absolutely positioned over it, with the step
+   bubble across the bottom of the stage - exactly where the needle moves, so the passes happened
+   behind the text. Nothing overlays the model now except the callouts, which point at structures. */
+.stage-bar{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap;margin-top:12px}
+.step-label{min-height:44px;background:rgba(10,15,23,.72);border:1px solid var(--line);
+  border-radius:12px;padding:11px 15px;font-size:calc(var(--fs)*.82);
+  flex:1 1 260px;box-shadow:var(--shadow-s)}
+.step-label b{color:var(--accent2)}
+.stage-meta{display:flex;gap:8px 18px;flex-wrap:wrap;align-items:center;margin-top:10px;
+  font-size:calc(var(--fs)*.7);color:var(--ink2)}
+.badge{border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--bg2);box-shadow:var(--shadow-s);white-space:nowrap}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center}
+.legend div{display:flex;align-items:center;white-space:nowrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;
+  margin-right:7px;vertical-align:middle}
 .play{background:var(--accent);color:#04121f;border:0;border-radius:12px;
   padding:13px 24px;font-size:calc(var(--fs)*.85);font-weight:800;cursor:pointer;
   font-family:inherit;min-height:48px;box-shadow:var(--shadow-m);
@@ -232,15 +235,11 @@ html[data-contrast="high"] .sheet-note{background:#141414;border-left-color:#ffc
 @media (max-width:520px){
   .stage{aspect-ratio:4/3}
 
-  /* badge shrinks so it stays clear of the top-right legend */
-  .stage .badge{top:8px;left:10px;padding:5px 10px;font-size:calc(var(--fs)*.6)}
-
-  /* legend survives on a phone: compact, legible key in the top-right corner,
-     away from the bottom step banner and above the scene labels (z-index:4) */
-  .stage .legend{top:8px;right:10px;padding:6px 8px;max-width:min(120px,40vw);
-    font-size:calc(var(--fs)*.58);background:rgba(6,12,24,.92);border-radius:9px;
-    line-height:1.3}
-  .stage .legend i{width:7px;height:7px;margin-right:5px}
+  /* the chrome is below the picture now, so on a phone it just tightens up */
+  .stage-bar{gap:8px;margin-top:10px}
+  .step-label{font-size:calc(var(--fs)*.76);padding:9px 12px}
+  .stage-meta{font-size:calc(var(--fs)*.62);gap:6px 12px}
+  .legend i{width:7px;height:7px;margin-right:5px}
 
   /* labels shrink on a phone so they take less screen and collide less */
   .scene-label{font-size:calc(var(--fs)*.5);padding:2px 6px}
@@ -340,18 +339,25 @@ html[data-contrast="high"] .sheet-note{background:#141414;border-left-color:#ffc
       <canvas id="gl" role="img"
         aria-label="3D animation of the thyroid and the FNAC needle. A text description of every step is given underneath this animation."
         tabindex="0"></canvas>
-      <div class="badge">Drag to rotate · scroll to zoom</div>
       <div class="scene-labels" id="sceneLabels" aria-hidden="true"></div>
+    </div>
+
+    <!-- Everything that used to float over the 3D now sits below it. The step bubble was absolutely
+         positioned across the bottom of the stage and covered the part of the neck the needle moves
+         through, so the passes were hidden behind the text. Only the anatomy callouts stay in the
+         picture, because they point at structures. -->
+    <div class="stage-bar">
+      <div class="step-label" id="stepLabel" aria-live="polite"><b>Step 1 of 9.</b> Your neck and your thyroid.</div>
+      <button class="play" id="btnPlay">▶ Play</button>
+    </div>
+    <div class="stage-meta">
+      <div class="badge">Drag to rotate · pinch or scroll to zoom</div>
       <div class="legend" aria-hidden="true">
         <div><i style="background:#e07f8f"></i>Thyroid gland</div>
         <div><i style="background:#9b2233"></i>Nodule</div>
         <div><i style="background:#dfe3e8"></i>Trachea (windpipe)</div>
         <div><i style="background:#f2f5f8"></i>Needle</div>
         <div><i style="background:#3d4553"></i>Ultrasound probe</div>
-      </div>
-      <div class="hud">
-        <div class="step-label" id="stepLabel" aria-live="polite"><b>Step 1 of 9.</b> Your neck and your thyroid.</div>
-        <button class="play" id="btnPlay">▶ Play</button>
       </div>
     </div>
 
